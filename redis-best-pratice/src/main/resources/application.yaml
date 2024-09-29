@@ -4,9 +4,9 @@ spring:
   application:
     name: redis-best-pratice
   redis:
-    host: 192.168.179.100 # redis主机号
+    host: localhost # redis主机号
     port: 6379 #端口号
-    password: 123321 #密码
+    #password: 123321 #密码
     lettuce:
       pool:
         max-active: 10 # 连接池最大连接数

@@ -14,14 +14,15 @@ public class BasicTest {
     private ListConstructDemo listConstructDemo;
     @Test
     public void ListTest(){
-        listConstructDemo.leftInsert("a","111");
+        listConstructDemo.leftPush("a","111");
 
-        listConstructDemo.leftInsert("a","222");
+        listConstructDemo.leftPush("a","222");
 
-        listConstructDemo.leftInsert("a","333");
+        listConstructDemo.leftPush("a","333");
 
-        listConstructDemo.leftInsert("a","444");
-        System.out.println(listConstructDemo.getSize("a"));
+        listConstructDemo.leftPush("a","444");
+        System.out.println("list的大小"+listConstructDemo.getSize("a"));
+        listConstructDemo.printList("a");
 
 
     }
