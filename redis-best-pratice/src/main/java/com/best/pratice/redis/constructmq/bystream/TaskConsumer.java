@@ -11,7 +11,7 @@ public class TaskConsumer implements StreamListener<String, ObjectRecord<String,
 
     @Autowired
     private StringRedisTemplate redisTemplate;
-
+    //TODO 未完成
     //配置消费者组
     @Override
     public void onMessage(ObjectRecord<String, String> message) {

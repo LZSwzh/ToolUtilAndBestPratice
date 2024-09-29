@@ -37,5 +37,6 @@ public class StreamConstructDemo {
     public void add(String key, Map<String,String> record){
         RecordId recordId = redisTemplate.opsForStream().add(key, record);
 
+        //TODO
     }
 }
