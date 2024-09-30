@@ -11,25 +11,33 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
-public class TaskConsumerListener implements StreamListener<String, MapRecord<String,String,String>> {
+public class StreamTaskConsumerListener implements StreamListener<String, ObjectRecord<String,String>> {
 
     @Autowired
     private StringRedisTemplate redisTemplate;
 
+    //配置消费者组名称
+    private String group = "group-1";
 
-    //配置消费者组
+
     @Override
-    public void onMessage(MapRecord<String, String, String> message) {
+    public void onMessage(ObjectRecord<String, String> message) {
         //消息ID
         RecordId messageId = message.getId();
         //消息的Key和Value
-        Map<String, String> body = message.getValue();
+        String messageBody = message.getValue();
 
         //打印
         System.out.println("监听器监听id:"+messageId);
-        System.out.println("消息内容content:"+body.toString());
+        System.out.println("消息内容content:"+messageBody.toString());
 
         //手动确认ACK
-        redisTemplate.opsForStream().acknowledge("mystream",message);
+        try {
+            //TODO...开始消费
+            redisTemplate.opsForStream().acknowledge(group,message);
+        } catch (Exception e) {
+            //当消费出现异常，可以做一些操作防止消息丢失(如再次入队、或者记录错误)
+            //...
+        }
     }
 }
