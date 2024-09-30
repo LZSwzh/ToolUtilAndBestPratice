@@ -2,10 +2,14 @@ package com.best.pratice.redis.basic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.stream.RecordId;
+import org.springframework.data.redis.connection.stream.StreamRecords;
+import org.springframework.data.redis.connection.stream.StringRecord;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -29,6 +33,17 @@ import java.util.Map;
 public class StreamConstructDemo {
     @Autowired
     private StringRedisTemplate redisTemplate;
+
+    /**
+     * 消息对象相关
+     */
+    public void testRecord(){
+        //通过StreamRecords.string创建对象
+        StringRecord record = StreamRecords.string(Collections.singletonMap("name", "value"))
+                .withStreamKey("streamKey");
+//                .withId();id可以自动生成，也可以自定义
+        
+    }
 
     /**
      * 消息队列相关命令
