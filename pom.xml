@@ -20,6 +20,8 @@
         <module>mutiThread-learning-pratice</module>
         <module>exception-best-pratice</module>
         <module>redis-best-pratice</module>
+        <module>daliy-use-algorithms</module>
+        <module>daliy-use-regex</module>
     </modules>
 
     <properties>
