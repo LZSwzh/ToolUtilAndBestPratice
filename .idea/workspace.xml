@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fc887e06-ef17-427d-a31e-0316022a9f97" name="Changes" comment="Use Redission to build distributed locks to ensure idempotency(80%)" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../ToolSoftware/maven/apache-maven-3.8.8" />
+        <option name="threads" value="8" />
+        <option name="userSettingsFile" value="D:\ToolSoftware\maven\apache-maven-3.8.8\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2mlkwPfVYGdtnTpGgDs2GlY1ngk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/workspace/BestPratice/ToolUtilAndBestPratice",
+    "settings.editor.selected.configurable": "com.gitee.ui.GiteeSettingsConfigurable"
+  }
+}]]></component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.AopApp">
+    <configuration name="AopApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.best.practice.aop.AopApp" />
+      <module name="aop-best-pratice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.best.practice.aop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StreamMQTest.testStreamMQ" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="redis-best-pratice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.best.pratice.redis.mq.listmq.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.best.pratice.redis.mq.listmq" />
+      <option name="MAIN_CLASS_NAME" value="com.best.pratice.redis.mq.listmq.StreamMQTest" />
+      <option name="METHOD_NAME" value="testStreamMQ" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AopApp" />
+        <item itemvalue="JUnit.StreamMQTest.testStreamMQ" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fc887e06-ef17-427d-a31e-0316022a9f97" name="Changes" comment="" />
+      <created>1727658789053</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727658789053</updated>
+    </task>
+    <task id="LOCAL-00001" summary="test push to github by other computer">
+      <created>1727659506969</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1727659506969</updated>
+    </task>
+    <task id="LOCAL-00002" summary="construct MQ by redis-group(60%)">
+      <created>1727661122586</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727661122586</updated>
+    </task>
+    <task id="LOCAL-00003" summary="construct MQ by redis-group(80%)">
+      <created>1727677388902</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727677388902</updated>
+    </task>
+    <task id="LOCAL-00004" summary="分布式锁保证幂等">
+      <created>1728905326666</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728905326666</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Use Redission to build distributed locks to ensure idempotency">
+      <created>1728954929812</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728954929812</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Use Redission to build distributed locks to ensure idempotency(80%)">
+      <created>1730440587203</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730440587204</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test push to github by other computer" />
+    <MESSAGE value="construct MQ by redis-group(60%)" />
+    <MESSAGE value="construct MQ by redis-group(80%)" />
+    <MESSAGE value="分布式锁保证幂等" />
+    <MESSAGE value="Use Redission to build distributed locks to ensure idempotency" />
+    <MESSAGE value="Use Redission to build distributed locks to ensure idempotency(80%)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use Redission to build distributed locks to ensure idempotency(80%)" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
