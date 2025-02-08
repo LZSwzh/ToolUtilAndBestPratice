@@ -19,16 +19,21 @@ import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
 
+/**
+ * AOP得方式2，借助AspectJ这样得AOP框架
+ *
+ * @author wangzh
+ */
 @Aspect
 @Slf4j
 @Component
 public class IdempotentAdvice {
 
-    //引入Redisson分布式锁
+    /** 引入Redisson分布式锁 */
     private RedissonClient redissonClient;
 
 
-    //定义切点，匹配controller包下被Idempotent注解修饰的方法
+    /** 定义切点，匹配controller包下被Idempotent注解修饰的方法 */
     @Pointcut(
             "execution(* com.best.practice.aop.idempotent.controller..*(..)) && " +
             "@annotation(com.best.practice.aop.idempotent.anno.Idempotent)"

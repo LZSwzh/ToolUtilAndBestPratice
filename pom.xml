@@ -21,7 +21,9 @@
         <module>exception-best-pratice</module>
         <module>redis-best-pratice</module>
         <module>daliy-use-algorithms</module>
-        <module>daliy-use-regex</module>
+        <module>daliy-use-tool</module>
+        <module>java_version_test</module>
+        <module>interface-pratice</module>
     </modules>
 
     <properties>
@@ -41,6 +43,10 @@
           <artifactId>lombok</artifactId>
           <version>1.18.34</version>
       </dependency>
-
+      <dependency>
+          <groupId>cn.hutool</groupId>
+          <artifactId>hutool-all</artifactId>
+          <version>5.8.22</version>
+      </dependency>
   </dependencies>
 </project>
