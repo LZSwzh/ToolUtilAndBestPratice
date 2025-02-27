@@ -8,7 +8,7 @@
     </parent>
 
     <groupId>com.best.pratice.mutithread</groupId>
-    <artifactId>mutiThread-learning-pratice</artifactId>
+    <artifactId>muti-thread-pratice</artifactId>
     <packaging>jar</packaging>
 
     <name>mutiThread-learning-pratice</name>
