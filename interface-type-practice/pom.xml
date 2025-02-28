@@ -8,7 +8,7 @@
     </parent>
 
     <groupId>com.best.pratice.interface</groupId>
-    <artifactId>interface-practice</artifactId>
+    <artifactId>interface-type-practice</artifactId>
     <packaging>jar</packaging>
 
     <name>interface-practice</name>

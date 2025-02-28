@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.best.pratice.ralgorithms</groupId>
-    <artifactId>daliy-use-algorithms</artifactId>
+    <artifactId>daily-algorithms-pratice</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

@@ -8,7 +8,7 @@
     </parent>
 
     <groupId>com.best.pratice.design</groupId>
-    <artifactId>design-best-pratice</artifactId>
+    <artifactId>design-model-practice</artifactId>
     <packaging>jar</packaging>
 
     <name>design-best-pratice</name>

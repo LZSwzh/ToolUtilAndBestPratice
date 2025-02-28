@@ -11,18 +11,15 @@
   <url>http://maven.apache.org</url>
     <modules>
         <module>aop-best-pratice</module>
-        <module>design-best-pratice</module>
+        <module>design-model-practice</module>
         <module>transation-best-practice</module>
         <module>http-client-best-practice</module>
         <module>transation-best-practice</module>
-        <module>stream-best-practice</module>
-        <module>limiter-best-practice</module>
-        <module>mutiThread-learning-pratice</module>
         <module>redis-best-pratice</module>
-        <module>daliy-use-algorithms</module>
-        <module>daliy-use-tool</module>
-        <module>java_version_test</module>
-        <module>interface-pratice</module>
+        <module>daily-algorithms-pratice</module>
+        <module>daily-tool-practice</module>
+        <module>java-version-test</module>
+        <module>interface-type-practice</module>
     </modules>
 
     <properties>

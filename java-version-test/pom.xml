@@ -7,20 +7,27 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.best.pratice.mutithread</groupId>
-    <artifactId>muti-thread-pratice</artifactId>
+    <groupId>com.best.pratice.java_version</groupId>
+    <artifactId>java-version-test</artifactId>
     <packaging>jar</packaging>
 
-    <name>mutiThread-learning-pratice</name>
+    <name>java_version_test</name>
     <url>http://maven.apache.org</url>
 
     <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -28,14 +35,17 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <!-- 使用属性来设置源和目标版本 -->
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
         </plugins>
