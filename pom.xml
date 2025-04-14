@@ -18,8 +18,9 @@
         <module>redis-best-pratice</module>
         <module>daily-algorithms-pratice</module>
         <module>daily-tool-practice</module>
-        <module>java-version-test</module>
+        <module>java-version-practice</module>
         <module>interface-type-practice</module>
+        <module>unit-test-best-practice</module>
     </modules>
 
     <properties>

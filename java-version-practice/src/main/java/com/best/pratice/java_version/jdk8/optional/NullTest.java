@@ -26,18 +26,15 @@ public class NullTest {
         userArr[3] = user4;
     }
     public static void main(String[] args) {
-        /**
-         * 使用stream时，可能会出现空指针的情况：
-         *              1.数据源为空
-         *              2.中间操作的函数式接口访问了对象的属性或方法
-         *              3.方法引用
+        userArr = null;
+        /**使用stream时，可能会出现空指针的情况：
+         *              1.数据源为空    2.方法引用
+         *              3.中间操作的函数式接口访问了对象的属性或方法
          *              4.终止操作(forEach、collect等)中的函数对对象进行了操作
-         *              5.扁平化
-         *              6.并行流
+         *              5.扁平化      6.并行流
          */
-        //这里没有报错null，只是将数组中的null也装进了List
+        //当数据源存在null的时候这里没有报错null，只是将数组中的null也装进了List
         List<User> collect = Arrays.stream(userArr).collect(Collectors.toList());
-        //TODO 注意空指针的几种方式
         /**
          * 方式1：过滤可能存在的null
          */
