@@ -1,4 +1,4 @@
-package com.best.pratice.stream.entity;
+package com.best.praCtice.java_version.jdk8.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

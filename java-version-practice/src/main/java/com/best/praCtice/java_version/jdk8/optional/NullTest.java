@@ -1,6 +1,6 @@
-package com.best.pratice.stream.nullIdex;
+package com.best.praCtice.java_version.jdk8.optional;
 
-import com.best.pratice.stream.entity.User;
+import com.best.praCtice.java_version.jdk8.entity.User;
 
 import java.util.Arrays;
 import java.util.List;

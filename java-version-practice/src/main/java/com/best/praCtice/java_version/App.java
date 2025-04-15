@@ -1,4 +1,4 @@
-package com.best.pratice.java_version;
+package com.best.praCtice.java_version;
 
 /**
  * Hello world!

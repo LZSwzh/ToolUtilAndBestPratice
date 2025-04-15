@@ -1,23 +1,22 @@
-package com.best.pratice.stream.bisic;
+package com.best.praCtice.java_version.jdk8.bisic;
 
-import com.best.pratice.stream.entity.User;
-
-import static com.best.pratice.stream.nullIdex.NullTest.userArr;
+import com.best.praCtice.java_version.jdk8.optional.NullTest;
+import com.best.praCtice.java_version.jdk8.entity.User;
 
 public class parallerTest {
     static String suffix = "aiushgui";
     User[] UserArr = new User[10];
     static {
         User user1 = new User("wzh", 232, 5222.2);
-        userArr[0] = user1;
+        NullTest.userArr[0] = user1;
         User user2 = new User("yrt", 74, 70512985.0);
-        userArr[1] = user2;
+        NullTest.userArr[1] = user2;
         User user3 = new User("qws", 722, 22342.2);
-        userArr[2] = user3;
+        NullTest.userArr[2] = user3;
         User user4 = new User("uhg", 224, 2272.2);
-        userArr[3] = user4;
+        NullTest.userArr[3] = user4;
         for (int i = 4; i < 11; i++) {
-            userArr[i] = new User(suffix+i,382549,123542.3);
+            NullTest.userArr[i] = new User(suffix+i,382549,123542.3);
         }
     }
     /**

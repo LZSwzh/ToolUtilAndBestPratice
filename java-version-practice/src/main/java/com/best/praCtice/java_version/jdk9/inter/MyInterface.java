@@ -1,4 +1,4 @@
-package com.best.pratice.java_version.jdk9.inter;
+package com.best.praCtice.java_version.jdk9.inter;
 
 /**
  * JDK8已经引入了默认方法，主要是为了向后兼容，即给接口添加新的功能但是不影响其实现类。

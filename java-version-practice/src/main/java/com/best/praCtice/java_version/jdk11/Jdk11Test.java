@@ -1,4 +1,4 @@
-package com.best.pratice.java_version.jdk11;
+package com.best.praCtice.java_version.jdk11;
 
 public class Jdk11Test {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.best.pratice.java_version.jvm;
+package com.best.praCtice.java_version.jvm;
 
 /**
  * @author Nova007466
