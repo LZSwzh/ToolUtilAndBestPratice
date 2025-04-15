@@ -17,7 +17,7 @@ module com.best.practice.java_version.jdk9.jpms {
     /**
      * exports:用于声明模块中可以被其他模块访问的包。要求包不能是空包【无java\properties等】
      */
-    exports com.best.practice.java_version.jdk9.jpms;
+    exports com.best.practice.java_version.jdk9.inter;
     /**
      * exports...to...:限制包只对某些包可见
      */
