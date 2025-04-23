@@ -1,4 +1,4 @@
-package webservice.code.qq;
+package com.best.practice.intertype.webservice.code.qq;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="qqCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="qqCheckOnlineResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -25,31 +25,31 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "qqCode"
+        "qqCheckOnlineResult"
 })
-@XmlRootElement(name = "qqCheckOnline")
-public class QqCheckOnline {
+@XmlRootElement(name = "qqCheckOnlineResponse")
+public class QqCheckOnlineResponse {
 
-    protected String qqCode;
+    protected String qqCheckOnlineResult;
 
     /**
-     * 获取qqCode属性的值。
+     * 获取qqCheckOnlineResult属性的值。
      *
      * @return possible object is
      * {@link String }
      */
-    public String getQqCode() {
-        return qqCode;
+    public String getQqCheckOnlineResult() {
+        return qqCheckOnlineResult;
     }
 
     /**
-     * 设置qqCode属性的值。
+     * 设置qqCheckOnlineResult属性的值。
      *
      * @param value allowed object is
      *              {@link String }
      */
-    public void setQqCode(String value) {
-        this.qqCode = value;
+    public void setQqCheckOnlineResult(String value) {
+        this.qqCheckOnlineResult = value;
     }
 
 }

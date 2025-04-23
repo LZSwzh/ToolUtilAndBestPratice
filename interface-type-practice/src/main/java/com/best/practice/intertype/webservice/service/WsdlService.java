@@ -1,7 +1,7 @@
-package webservice.service;
+package com.best.practice.intertype.webservice.service;
 
-import webservice.code.qq.QqOnlineWebService;
-import webservice.code.qq.QqOnlineWebServiceSoap;
+import com.best.practice.intertype.webservice.code.qq.QqOnlineWebService;
+import com.best.practice.intertype.webservice.code.qq.QqOnlineWebServiceSoap;
 
 public class WsdlService {
     public static void main(String[] args) {

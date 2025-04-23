@@ -1,10 +1,8 @@
-package webservice.service;
+package com.best.practice.intertype.webservice.service;
 
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
-import webservice.code.oa.entity.WorkflowServiceXmlLocator;
-import webservice.code.oa.entity.WorkflowServiceXmlPortType;
-import webservice.code.oa.entity.*;
+import com.best.practice.intertype.webservice.code.oa.entity.*;
 
 import javax.xml.rpc.ServiceException;
 import java.rmi.RemoteException;
@@ -693,7 +691,7 @@ public class OaSoapService2 {
         //流程名称
         workflowBaseInfo.setWorkflowName(MapUtil.getStr(params, "bt", ""));
         //流程类型名称
-        workflowBaseInfo.setWorkflowTypeName("webservice");
+        workflowBaseInfo.setWorkflowTypeName("com/best/practice/intertype/webservice");
         workflowRequestInfo.setWorkflowBaseInfo(workflowBaseInfo);
         /*============================================ 2.工作流基本信息 End ========================================= */
 

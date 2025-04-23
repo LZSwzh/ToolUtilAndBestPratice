@@ -1,4 +1,4 @@
-package webservice.code.oa.entity;
+package com.best.practice.intertype.webservice.code.oa.entity;
 
 import java.io.Serializable;
 

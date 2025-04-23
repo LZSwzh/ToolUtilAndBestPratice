@@ -1,4 +1,4 @@
-package webservice.code.qq;
+package com.best.practice.intertype.webservice.code.qq;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;

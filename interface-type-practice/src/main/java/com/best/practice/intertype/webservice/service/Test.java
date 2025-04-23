@@ -1,4 +1,4 @@
-package webservice.service;
+package com.best.practice.intertype.webservice.service;
 
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 

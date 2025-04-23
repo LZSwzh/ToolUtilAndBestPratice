@@ -1,4 +1,4 @@
-package webservice.code.qq;
+package com.best.practice.intertype.webservice.code.qq;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
