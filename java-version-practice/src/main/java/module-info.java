@@ -1,4 +1,3 @@
-//JPMS是JDK9尝试引入的模块化特性
 module com.best.practice.java_version.jdk9.jpms {
     /**
      * requires 表示当前模块依赖其他模块
@@ -24,7 +23,7 @@ module com.best.practice.java_version.jdk9.jpms {
     exports com.best.practice.java_version.jdk9.anonyclazz to  com.best.practice.java_version.jdk9.inter;
     /**
      * opens:声明模块中可以被其他模块反射访问的包。
-     */;
+     */
      opens com.best.practice.java_version.jdk9.inter;
 
     /**
