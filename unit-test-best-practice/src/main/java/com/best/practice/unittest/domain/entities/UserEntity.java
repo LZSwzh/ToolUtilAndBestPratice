@@ -1,6 +1,8 @@
 package com.best.practice.unittest.domain.entities;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -8,8 +10,8 @@ import lombok.Data;
 @Data
 @TableName("user")
 public class UserEntity {
-    @TableField("user_id")
-    private String userId;
+    @TableId(value = "user_id",type = IdType.AUTO)
+    private Long userId;
 
     @TableField("user_name")
     private String userName;

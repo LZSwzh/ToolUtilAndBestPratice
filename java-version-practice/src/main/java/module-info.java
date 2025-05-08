@@ -3,16 +3,16 @@ module com.best.practice.java_version.jdk9.jpms {
      * requires 表示当前模块依赖其他模块
      * 1、java.base 是JDK基础模块
      */
-    requires java.base;
+//    requires java.base;
     /**
      * requires transitive 表示任何依赖当前模块的模块都需要引入desktop
      * 类似maven的依赖传递性
      */
-    requires transitive java.desktop;
+//    requires transitive java.desktop;
     /**
      * requires static 表示在编译期间依赖logging模块，运行期非必须
      */
-    requires static java.logging;
+//    requires static java.logging;
     /**
      * exports:用于声明模块中可以被其他模块访问的包。要求包不能是空包【无java\properties等】
      */
