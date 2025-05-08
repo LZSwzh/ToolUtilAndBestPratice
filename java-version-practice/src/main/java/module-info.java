@@ -1,9 +1,10 @@
 module com.best.practice.java_version.jdk9.jpms {
+
     /**
      * requires 表示当前模块依赖其他模块
      * 1、java.base 是JDK基础模块
      */
-//    requires java.base;
+    requires java.base;
     /**
      * requires transitive 表示任何依赖当前模块的模块都需要引入desktop
      * 类似maven的依赖传递性

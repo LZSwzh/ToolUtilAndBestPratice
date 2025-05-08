@@ -8,4 +8,6 @@ import org.mockito.InjectMocks;
 public class MockServiceImplTest {
     @InjectMocks
     private MockServiceImpl mockService;
+
+
 }
