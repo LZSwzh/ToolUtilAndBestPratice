@@ -5,6 +5,7 @@ module com.best.practice.java_version.jdk9.jpms {
      * 1、java.base 是JDK基础模块
      */
     requires java.base;
+    requires cn.hutool;
     /**
      * requires transitive 表示任何依赖当前模块的模块都需要引入desktop
      * 类似maven的依赖传递性
