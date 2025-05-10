@@ -34,7 +34,7 @@ public class flatMapTest {
                     }
                 }).get();
         System.out.println(maxAccountBook.bookName+":"+maxAccountBook.account);
-        // 使用Comparator优化比较洛奇,同时使用orElseThrow 抛出异常
+        // 使用Comparator优化比较器,同时使用orElseThrow 抛出异常
         Book maxAccountBook2 = authList.stream()
                 .flatMap(au -> au.books.stream())
                 .max(Comparator.comparingDouble(t-> t.account))

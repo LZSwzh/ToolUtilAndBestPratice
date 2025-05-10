@@ -1,6 +1,6 @@
 package com.best.practice.java_version.juc.a_jmm.a_challenge;
 
-import cn.hutool.core.date.TimeInterval;
+
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -23,8 +23,7 @@ public class ContentSwitch3 {
     }
 
     public static void serial(){
-        final TimeInterval timer = new TimeInterval();
-        timer.start();
+        long begin = System.currentTimeMillis();
         System.out.println("===========================Serial Begin==========================");
         try {
             System.out.println("Serial taskA 开始执行");
@@ -45,13 +44,11 @@ public class ContentSwitch3 {
         }
 
         System.out.println("===========================Serial End==========================");
-        timer.interval();
-        System.out.println("Timer A took {"+timer.intervalMs()+"} ms");
+        System.out.println("Timer A took: " + (System.currentTimeMillis() - begin) + " ms");
     }
 
     public static void concurrent() throws InterruptedException, ExecutionException {
-        final TimeInterval timer = new TimeInterval();
-        timer.start();
+        long begin = System.currentTimeMillis();
         System.out.println("===========================Concurrent Begin==========================");
         CompletableFuture<Integer> futureA = CompletableFuture.supplyAsync(() -> {
             System.out.println("Concurrent futureA 开始执行");
@@ -85,7 +82,6 @@ public class ContentSwitch3 {
             }
         }).join();
         System.out.println("===========================Concurrent End==========================");
-        timer.interval();
-        System.out.println("Timer B took {"+timer.intervalMs()+"} ms");
+        System.out.println("Timer A took: " + (System.currentTimeMillis() - begin) + " ms");
     }
 }
