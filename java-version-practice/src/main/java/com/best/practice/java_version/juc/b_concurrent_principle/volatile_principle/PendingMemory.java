@@ -3,17 +3,17 @@ package com.best.practice.java_version.juc.b_concurrent_principle.volatile_princ
 import org.apache.lucene.util.RamUsageEstimator;
 
 /**
- * 在FakeSharing的基础上，通过手动对齐缓存行，来提高性能
- * 1314800ms
- * 912500ms
- * 1039300ms
- * 746100ms
- * 820300ms
- * 783500ms
- * 815100ms
- * 1394300ms
- * 950600ms
- * 675800ms
+ * 在FakeSharing的基础上，通过手动对齐缓存行，来提高性能.平均耗时:926350ms，观察不出明显的变化为什么
+ * 945500ms
+ * 835800ms
+ * 973400ms
+ * 777600ms
+ * 712200ms
+ * 1007300ms
+ * 1037200ms
+ * 880500ms
+ * 951300ms
+ * 1142700ms
  */
 public class PendingMemory {
     private static final int ROWS = 1024;
@@ -59,6 +59,7 @@ public class PendingMemory {
 
     static class PendingUser extends VolatileUser{
         private long p1,p2,p3,p4,p5;
+        private Object p6;
         public PendingUser() {
             super();
         }
