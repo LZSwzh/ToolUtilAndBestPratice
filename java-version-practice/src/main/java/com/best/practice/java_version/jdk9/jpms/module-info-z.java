@@ -1,4 +1,4 @@
-//module com.best.practice.java_version.jdk9.jpms {
+//module com.best.practice.java_version {
 //
 //    /**
 //     * requires 表示当前模块依赖其他模块
@@ -6,6 +6,7 @@
 //     */
 //    requires java.base;
 //    requires java.instrument;
+//
 //
 ////    requires cn.hutool;
 //    /**

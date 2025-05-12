@@ -1,22 +1,18 @@
 package com.best.practice.java_version.juc.b_concurrent_principle.volatile_principle;
 
-import com.best.practice.java_version.jdk8.entity.User;
 import org.apache.lucene.util.RamUsageEstimator;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
- *  * https://blog.csdn.net/MrYushiwen/article/details/123171635
- *  * 通过对齐缓存行的宽度优化volatile
- *  将如下代码运行一次耗时:
- *  62038534000ms、
+ * 在FakeSharing的基础上，通过注解对齐。在JDK9及以上通过--XX:-RestrictContended开启；-XX:ContendedPaddingWidth设置填充宽度
+ * JDK9以上由于启用了JPMS,因此需要在IDEA的java compile中添加--add-exports java.base/jdk.internal.vm.annotation=ALL-UNNAMED
+ * 改了一些配置后三者的执行时间
+ * 优化前代码耗时       ： 62038534000ms
+ * 手动对齐内存耗时     :  19012375101ms
+ * 使用注解对齐内存     ： 16287798200ms，不写ContendedPaddingWidth打印出的对象的大小是152
+ * 其实后面两个的性能差不多，只是每次执行的效果不太一样
  */
-public class FakeSharing {
+public class PendingMemoryByContented {
     private static final int ROWS = 1024;
     private static final int COLS = 1024;
     private static final int NUM_THREADS = Runtime.getRuntime().availableProcessors();
@@ -31,7 +27,7 @@ public class FakeSharing {
         VolatileUser user = new VolatileUser("张三", Long.valueOf("10000"));
         long size = RamUsageEstimator.shallowSizeOf(user);
         //对象头(12)+name引用(4)+salary引用(4)=20；对象还会对齐到8的倍数，所以size=24;
-        System.out.println("========= Static Print VolatileUser Size："+size+" byte ========");
+        System.out.println("========= Static Print ContentedUser Size："+size+" byte ========");
         for (int i = 0; i < userList.length; i++) {
             userList[i] = new VolatileUser();
         }
@@ -58,7 +54,7 @@ public class FakeSharing {
         }
         System.out.println("伪共享代码业务逻辑执行完毕,耗时:"+(System.nanoTime()-begin)+"ms");
     }
-
+    @jdk.internal.vm.annotation.Contended
     static class VolatileUser{
         private String name;
         private volatile Long salary;
@@ -85,4 +81,6 @@ public class FakeSharing {
             this.salary = salary;
         }
     }
+
+
 }
