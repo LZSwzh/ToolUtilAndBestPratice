@@ -4,16 +4,9 @@ import org.apache.lucene.util.RamUsageEstimator;
 
 /**
  * 在FakeSharing的基础上，通过手动对齐缓存行，来提高性能.平均耗时:926350ms，观察不出明显的变化为什么
- * 945500ms
- * 835800ms
- * 973400ms
- * 777600ms
- * 712200ms
- * 1007300ms
- * 1037200ms
- * 880500ms
- * 951300ms
- * 1142700ms
+ * 优化前代码耗时       ： 62038534000ms
+ * 将如下代码运行一次耗时:  28958268000ms
+ * 优化效率基本是一杯了......
  */
 public class PendingMemory {
     private static final int ROWS = 1024;
@@ -48,6 +41,7 @@ public class PendingMemory {
                     user.setSalary(j);
                 }
             });
+            threads[threadNum].start();
         }
 
         // 等待所有线程完成

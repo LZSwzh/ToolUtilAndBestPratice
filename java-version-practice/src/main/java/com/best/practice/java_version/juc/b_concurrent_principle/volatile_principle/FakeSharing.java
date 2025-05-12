@@ -13,17 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  *  * https://blog.csdn.net/MrYushiwen/article/details/123171635
  *  * 通过对齐缓存行的宽度优化volatile
- *  存在为伪共享问题的代码执行五次的结果如下，平均耗时:1013910ms
- *  853400 ms
- *  1445200ms
- *  812600 ms
- *  1028000ms
- *  936200 ms
- *  1327400ms
- *  825800ms
- *  812200ms
- *  1116700ms
- *  981600ms
+ *  将如下代码运行一次耗时:62038534000ms
  */
 public class FakeSharing {
     private static final int ROWS = 1024;
@@ -58,6 +48,7 @@ public class FakeSharing {
                     user.setSalary(j);
                 }
             });
+            threads[threadNum].start();
         }
 
         // 等待所有线程完成
