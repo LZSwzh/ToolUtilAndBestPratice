@@ -1,46 +1,63 @@
 package com.best.practice.java_version.juc.b_concurrent_principle.volatile_principle;
 
+import com.best.practice.java_version.jdk8.entity.User;
+import org.apache.lucene.util.RamUsageEstimator;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
+
 /**
  *  * https://blog.csdn.net/MrYushiwen/article/details/123171635
  *  * 通过对齐缓存行的宽度优化volatile
- *  存在为伪共享问题的代码执行五次的结果如下，平均耗时:12128160ms
- *  6625300ms
- *  9936200ms
- *  15331500ms
- *  11321800ms
- *  18445000ms
+ *  存在为伪共享问题的代码执行五次的结果如下，平均耗时:1013910ms
+ *  853400 ms
+ *  1445200ms
+ *  812600 ms
+ *  1028000ms
+ *  936200 ms
+ *  1327400ms
+ *  825800ms
+ *  812200ms
+ *  1116700ms
+ *  981600ms
  */
 public class FakeSharing {
     private static final int ROWS = 1024;
     private static final int COLS = 1024;
-    private static final int NUM_THREADS = 4;
-    private static final int CACHE_LINE_SIZE = 64; // 假设缓存行大小为64字节
+    private static final int NUM_THREADS = Runtime.getRuntime().availableProcessors();
+    public final static long ITERATIONS = 500L * 1000L * 1000L;
 
-    // 二维数组，每个元素为long类型，占用8字节，每行的每8个元素占用一个缓存行
-    public static long[][] matrix = new long[ROWS][COLS];
+    /**
+     * 创建一个List结构用于存放User，其中user的salary使用volatile修饰
+     */
+    public static VolatileUser[] userList = new VolatileUser[NUM_THREADS];
+
+    static {
+        VolatileUser user = new VolatileUser("张三", Long.valueOf("10000"));
+        long size = RamUsageEstimator.shallowSizeOf(user);
+        //对象头(12)+name引用(4)+salary引用(4)=20；对象还会对齐到8的倍数，所以size=24;
+        System.out.println("========= Static Print VolatileUser Size："+size+" byte ========");
+        for (int i = 0; i < userList.length; i++) {
+            userList[i] = new VolatileUser();
+        }
+    }
 
     public static void main(String[] args) throws InterruptedException {
         long begin = System.nanoTime();
         Thread[] threads = new Thread[NUM_THREADS];
-
-        // 初始化数组
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                matrix[i][j] = 0;
-            }
-        }
-
-        // 创建并启动线程
-        for (int i = 0; i < NUM_THREADS; i++) {
-            final int threadId = i;
-            threads[i] = new Thread(() -> {
-                for (int j = 0; j < COLS; j++) {
-                    // 每个线程更新同一列的不同行,导致同个缓存行内的数据被多个线程同时修改导致伪共享
-                    int row = j * NUM_THREADS + threadId;
-                    if (row<ROWS) matrix[row][j] = 1; // 更新操作
+        for (int threadNum = 0; threadNum < threads.length; threadNum++) {
+            final int idx = threadNum;
+            threads[threadNum] = new Thread(() -> {
+                long j = ITERATIONS + 1;
+                while (0 != --j) {
+                    VolatileUser user = userList[idx];
+                    user.setSalary(j);
                 }
             });
-            threads[i].start();
         }
 
         // 等待所有线程完成
@@ -48,19 +65,32 @@ public class FakeSharing {
             thread.join();
         }
         System.out.println("伪共享代码业务逻辑执行完毕,耗时:"+(System.nanoTime()-begin)+"ms");
+    }
 
-        // 验证结果
-//        for (int j = 0; j < COLS; j++) {
-//            boolean allSet = true;
-//            for (int i = 0; i < ROWS; i++) {
-//                if (matrix[i][j] != 1) {
-//                    allSet = false;
-//                    break;
-//                }
-//            }
-//            if (!allSet) {
-//                System.out.println("Column " + j + " is not fully set.");
-//            }
-//        }
+    static class VolatileUser{
+        private String name;
+        private volatile Long salary;
+        public VolatileUser() {}
+
+        public VolatileUser(String name, Long salary) {
+            this.name = name;
+            this.salary = salary;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Long getSalary() {
+            return salary;
+        }
+
+        public void setSalary(Long salary) {
+            this.salary = salary;
+        }
     }
 }
