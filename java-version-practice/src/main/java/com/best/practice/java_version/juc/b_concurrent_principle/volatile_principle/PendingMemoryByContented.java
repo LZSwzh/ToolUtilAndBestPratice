@@ -1,6 +1,7 @@
 package com.best.practice.java_version.juc.b_concurrent_principle.volatile_principle;
 
 import org.apache.lucene.util.RamUsageEstimator;
+import org.openjdk.jol.info.ClassLayout;
 
 
 /**
@@ -28,6 +29,20 @@ public class PendingMemoryByContented {
         long size = RamUsageEstimator.shallowSizeOf(user);
         //对象头(12)+name引用(4)+salary引用(4)=20；对象还会对齐到8的倍数，所以size=24;
         System.out.println("========= Static Print ContentedUser Size："+size+" byte ========");
+        System.out.println("========= Static Print Clazz Object Layout Begin========");
+        System.out.println(ClassLayout.parseInstance(user).toPrintable());
+        /*内存布局:默认在对象/字段前后添加128字节的padding,大于多数硬件缓存行大小,避免
+        OFF  SZ               TYPE DESCRIPTION               VALUE
+          0   8                    (object header: mark)     0x0000000000000001 (non-biasable; age: 0)
+          8   4                    (object header: class)    0x010031f8
+         12   4   java.lang.String VolatileUser.name         (object)
+         16 128                    (alignment/padding gap)
+        144   4     java.lang.Long VolatileUser.salary       10000
+        148   4                    (object alignment gap)
+        Instance size: 152 bytes
+        Space losses: 128 bytes internal + 4 bytes external = 132 bytes total
+        */
+        System.out.println("========= Static Print Clazz Object Layout End========");
         for (int i = 0; i < userList.length; i++) {
             userList[i] = new VolatileUser();
         }
@@ -54,9 +69,10 @@ public class PendingMemoryByContented {
         }
         System.out.println("伪共享代码业务逻辑执行完毕,耗时:"+(System.nanoTime()-begin)+"ms");
     }
-    @jdk.internal.vm.annotation.Contended
+
     static class VolatileUser{
         private String name;
+        @jdk.internal.vm.annotation.Contended
         private volatile Long salary;
         public VolatileUser() {}
 

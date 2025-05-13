@@ -55,10 +55,11 @@
             <artifactId>lucene-core</artifactId>
             <version>4.0.0</version>
         </dependency>
+        <!-- openJdk提供的jol工具可以用来打印对象内存布局 -->
         <dependency>
-            <groupId>rg.openjdk.jol</groupId>
+            <groupId>org.openjdk.jol</groupId>
             <artifactId>jol-core</artifactId>
-            <version>0.9</version>
+            <version>0.17</version>
         </dependency>
     </dependencies>
 
