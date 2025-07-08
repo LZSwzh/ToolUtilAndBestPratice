@@ -7,6 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 @RestController
 @RequiredArgsConstructor
 public class DemoController {
@@ -19,5 +23,29 @@ public class DemoController {
     public UserVO getUserById(@PathVariable Integer userId){
         UserDTO userDTO = demoService.findById(userId);
         return modelMapper.map(userDTO, UserVO.class);
+    }
+
+    public static void main(String[] args) {
+        String input = "confirm";
+        try {
+            // 获取 SHA - 256 消息摘要实例
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            // 计算输入字符串的哈希值
+            byte[] encodedHash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+
+            // 将字节数组转换为十六进制字符串
+            StringBuilder hexString = new StringBuilder(2 * encodedHash.length);
+            for (byte b : encodedHash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+
+            System.out.println("SHA-256 hash of \"" + input + "\": " + hexString.toString());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 }
