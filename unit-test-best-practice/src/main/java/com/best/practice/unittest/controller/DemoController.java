@@ -9,14 +9,11 @@ import lombok.extern.slf4j.XSlf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< HEAD
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-=======
 @Slf4j
->>>>>>> 8a64635ec3efedab010d4dba7f394b5574960990
 @RestController
 @RequiredArgsConstructor
 public class DemoController {

@@ -3,12 +3,17 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/aop-best-pratice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/aop-best-pratice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/daily-algorithms-pratice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/daily-tool-practice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/design-best-pratice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/design-best-pratice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/design-model-practice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/exception-best-pratice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/exception-best-pratice/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/http-client-best-practice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/http-client-best-practice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/interface-type-practice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java-version-practice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/limiter-best-practice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/limiter-best-practice/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mutiThread-learning-pratice/src/main/java" charset="UTF-8" />
@@ -21,5 +26,6 @@
     <file url="file://$PROJECT_DIR$/stream-best-practice/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/transation-best-practice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/transation-best-practice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/unit-test-best-practice/src/main/java" charset="UTF-8" />
   </component>
 </project>
