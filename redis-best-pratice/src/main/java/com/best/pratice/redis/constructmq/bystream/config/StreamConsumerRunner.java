@@ -1,9 +1,6 @@
 package com.best.pratice.redis.constructmq.bystream.config;
 
 import com.best.pratice.redis.constructmq.bystream.StreamTaskConsumerListener;
-import org.springframework.data.redis.connection.stream.Consumer;
-import org.springframework.data.redis.connection.stream.ReadOffset;
-import org.springframework.data.redis.connection.stream.StreamOffset;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.util.ErrorHandler;
 import org.springframework.beans.factory.DisposableBean;
@@ -14,7 +11,6 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.stream.MapRecord;
 import org.springframework.data.redis.stream.StreamMessageListenerContainer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 

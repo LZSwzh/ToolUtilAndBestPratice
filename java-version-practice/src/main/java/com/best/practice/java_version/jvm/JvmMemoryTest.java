@@ -1,4 +1,4 @@
-package com.best.pratice.java_version.jvm;
+package com.best.practice.java_version.jvm;
 
 /**
  * @author Nova007466
@@ -6,13 +6,13 @@ package com.best.pratice.java_version.jvm;
 public class JvmMemoryTest {
     public static void main(String[] args) {
         Runtime runtime = Runtime.getRuntime();
-        System.out.println("JVM从OS获取的最大内存"+calculateJvmMemory(runtime.maxMemory()));
-        System.out.println("JVM已经使用的内存"+calculateJvmMemory(runtime.totalMemory()));
-        System.out.println("JVM还未使用的内存"+calculateJvmMemory(runtime.freeMemory()));
+        System.out.println("JVM获取的最大内存 :"+ formatMemory(runtime.maxMemory()));
+        System.out.println("JVM已经使用的内存 :"+ formatMemory(runtime.totalMemory()));
+        System.out.println("JVM还未使用的内存 :"+ formatMemory(runtime.freeMemory()));
 
     }
 
-    public static String calculateJvmMemory(long memory){
+    public static String formatMemory(long memory){
         return memory/1024/1024+"M";
     }
 }

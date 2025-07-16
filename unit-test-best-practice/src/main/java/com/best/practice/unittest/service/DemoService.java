@@ -4,5 +4,5 @@ import com.best.practice.unittest.domain.dto.UserDTO;
 
 
 public interface DemoService {
-    UserDTO findById(Integer userId);
+    UserDTO findById(Long userId);
 }

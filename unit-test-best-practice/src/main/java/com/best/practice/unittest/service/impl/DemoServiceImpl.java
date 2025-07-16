@@ -17,7 +17,7 @@ public class DemoServiceImpl implements DemoService {
     private final ModelMapper modelMapper;
 
     @Override
-    public UserDTO findById(Integer userId) {
+    public UserDTO findById(Long userId) {
         UserEntity userEntity = demoMapper.selectById(userId);
         return modelMapper.map(userEntity, UserDTO.class);
     }
