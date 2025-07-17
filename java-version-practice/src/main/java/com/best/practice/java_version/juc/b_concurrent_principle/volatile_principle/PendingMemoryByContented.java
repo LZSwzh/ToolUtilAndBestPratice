@@ -72,7 +72,7 @@ public class PendingMemoryByContented {
 
     static class VolatileUser{
         private String name;
-        @jdk.internal.vm.annotation.Contended
+//        @jdk.internal.vm.annotation.Contended
         private volatile Long salary;
         public VolatileUser() {}
 

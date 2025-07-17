@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc887e06-ef17-427d-a31e-0316022a9f97" name="Changes" comment="Use Redission to build distributed locks to ensure idempotency(80%)">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="fc887e06-ef17-427d-a31e-0316022a9f97" name="Changes" comment="refactor(unit-test): fix merge conflict&#10;&#10;- 移除了 DemoController 中的冗余代码- 更新了项目中的编码设置，增加了多个模块的 UTF-8编码配置&#10;- 修改了 Maven 项目管理设置，指定了自定义的 Maven 家目录和本地仓库&#10;- 更新了 IDE 工作空间设置，包括变更列表、Git 设置、运行配置等">
+      <change afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/funcInterface/FuncAndGeneric.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/juc/b_concurrent_principle/volatile_principle/PendingMemoryByContented.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/juc/b_concurrent_principle/volatile_principle/PendingMemoryByContented.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,7 @@
         <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
         <option name="threads" value="10" />
         <option name="useMavenConfig" value="false" />
-        <option name="userSettingsFile" value="D:\ToolSoftware\maven\apache-maven-3.8.8\conf\settings.xml" />
+        <option name="userSettingsFile" value="D:\Runtime\maven\apache-maven-3.9.10\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -55,13 +55,19 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Maven.BestPratice [clean].executor": "Run",
+    "Maven.java-version-practice [clean].executor": "Run",
+    "Maven.java-version-practice [compile].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/Workspace/practice/java-best-practice",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "MavenSettings",
+    "应用程序.FuncAndGeneric.executor": "Run",
     "应用程序.TransationApp.executor": "Run"
   }
 }]]></component>
@@ -75,13 +81,26 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="应用程序.TransationApp">
+  <component name="RunManager" selected="应用程序.FuncAndGeneric">
     <configuration name="AopApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.best.practice.aop.AopApp" />
       <module name="aop-best-pratice" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.best.practice.aop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FuncAndGeneric" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.best.practice.java_version.jdk8.bisic.funcInterface.FuncAndGeneric" />
+      <module name="java-version-practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.best.practice.java_version.jdk8.bisic.funcInterface.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -120,6 +139,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.FuncAndGeneric" />
         <item itemvalue="应用程序.TransationApp" />
         <item itemvalue="JUnit.StreamMQTest.testStreamMQ" />
       </list>
@@ -176,7 +196,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730440587204</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor(unit-test): 重构单元测试示例&#10;&#10;- 移除了 DemoController 中的冗余代码- 更新了项目中的编码设置，增加了多个模块的 UTF-8编码配置&#10;- 修改了 Maven 项目管理设置，指定了自定义的 Maven 家目录和本地仓库&#10;- 更新了 IDE 工作空间设置，包括变更列表、Git 设置、运行配置等">
+      <option name="closed" value="true" />
+      <created>1752663841173</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1752663841173</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refactor(unit-test): fix merge conflict&#10;&#10;- 移除了 DemoController 中的冗余代码- 更新了项目中的编码设置，增加了多个模块的 UTF-8编码配置&#10;- 修改了 Maven 项目管理设置，指定了自定义的 Maven 家目录和本地仓库&#10;- 更新了 IDE 工作空间设置，包括变更列表、Git 设置、运行配置等">
+      <option name="closed" value="true" />
+      <created>1752663868063</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1752663868063</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -224,7 +260,9 @@
     <MESSAGE value="分布式锁保证幂等" />
     <MESSAGE value="Use Redission to build distributed locks to ensure idempotency" />
     <MESSAGE value="Use Redission to build distributed locks to ensure idempotency(80%)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Use Redission to build distributed locks to ensure idempotency(80%)" />
+    <MESSAGE value="refactor(unit-test): 重构单元测试示例&#10;&#10;- 移除了 DemoController 中的冗余代码- 更新了项目中的编码设置，增加了多个模块的 UTF-8编码配置&#10;- 修改了 Maven 项目管理设置，指定了自定义的 Maven 家目录和本地仓库&#10;- 更新了 IDE 工作空间设置，包括变更列表、Git 设置、运行配置等" />
+    <MESSAGE value="refactor(unit-test): fix merge conflict&#10;&#10;- 移除了 DemoController 中的冗余代码- 更新了项目中的编码设置，增加了多个模块的 UTF-8编码配置&#10;- 修改了 Maven 项目管理设置，指定了自定义的 Maven 家目录和本地仓库&#10;- 更新了 IDE 工作空间设置，包括变更列表、Git 设置、运行配置等" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(unit-test): fix merge conflict&#10;&#10;- 移除了 DemoController 中的冗余代码- 更新了项目中的编码设置，增加了多个模块的 UTF-8编码配置&#10;- 修改了 Maven 项目管理设置，指定了自定义的 Maven 家目录和本地仓库&#10;- 更新了 IDE 工作空间设置，包括变更列表、Git 设置、运行配置等" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
