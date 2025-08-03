@@ -1,4 +1,4 @@
-package com.best.practice.java_version.jdk8.bisic;
+package com.best.practice.java_version.jdk8.bisic.stream;
 
 import java.util.*;
 

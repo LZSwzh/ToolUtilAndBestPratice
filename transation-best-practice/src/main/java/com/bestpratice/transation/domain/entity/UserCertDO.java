@@ -17,7 +17,7 @@ import java.util.List;
 public class UserCertDO extends BaseDO {
     /** <p>主键ID</p> */
     @Id
-    private String id;
+    private String _id;
 
     /** <p>用户ID</p> */
     @Indexed(unique = false)

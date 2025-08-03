@@ -30,10 +30,10 @@ public class FuncAndGeneric {
         validateEmail(user);
         validateSex(user);
         /** =======================  函数式接口优化  ======================= */
-        validateByFunc(user, User::getName, StrUtil::isEmpty, "用户名非法");
-        validateByFunc(user, User::getAge, age->NumberUtil.compare(age,18)<=0, "用户名非法");
-//        User nameErrUser = new User("", 19, "zhangsan@163.com", "男");
-//        validateByFunc(nameErrUser, User::getName, StrUtil::isEmpty, "用户名非法");
+//        validateByFunc(user, User::getName, StrUtil::isEmpty, "用户名非法");
+//        validateByFunc(user, User::getAge, age->NumberUtil.compare(age,18)<=0, "用户名非法");
+        User nameErrUser = new User("", 19, "zhangsan@163.com", "男");
+        validateByFunc(nameErrUser, User::getName, StrUtil::isEmpty, "用户名非法");
 //        User ageErrUser = new User("zhangsan", 14, "zhangsan@163.com", "男");
 //        validateByFunc(ageErrUser, User::getAge, age->NumberUtil.compare(age,18)<=0, "年龄");
 //        User emailErrUser = new User("zhangsan", 14, "asdhjfaious", "男");
@@ -78,7 +78,7 @@ public class FuncAndGeneric {
         //校验get方法返回null
         if (Objects.isNull(getFunc.call(obj))) throw new RuntimeException(fieldName+"字段不能为空");
         //校验get方法返回值
-        if (validateFunc.test(getFunc.call(obj))) throw new RuntimeException(fieldName+"字段非法");
+        if (validateFunc.test(getFunc.call(obj))) throw new RuntimeException(String.format(fieldName+"字段的值【%s】非法", getFunc.call(obj)));
     }
 
 

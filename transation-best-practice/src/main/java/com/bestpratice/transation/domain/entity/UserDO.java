@@ -1,5 +1,6 @@
 package com.bestpratice.transation.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.bestpratice.transation.domain.base.BaseDO;
@@ -14,13 +15,13 @@ public class UserDO extends BaseDO {
     @TableId("user_id")
     private Integer userId;
 
-    @TableId("user_name")
+    @TableField("user_name")
     private String userName;
 
-    @TableId("user_age")
+    @TableField("user_age")
     private Integer userAge;
 
-    @TableId("user_sex")
+    @TableField("user_sex")
     private String userSex;
 
 }
