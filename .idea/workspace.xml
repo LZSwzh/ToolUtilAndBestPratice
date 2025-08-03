@@ -4,28 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc887e06-ef17-427d-a31e-0316022a9f97" name="Changes" comment="feat(java-version): add example of functional interfaces and generics&#10;- Added FuncAndGeneric class to demonstrate the use of functional interfaces and generics for parameter validation&#10;- Implemented validation logic for user information (name, age, email, gender)&#10;Optimized traditional validation methods using functional interfaces, improving code reusability and readability&#10;- Added comments and test cases for better understanding and code verification">
-      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/MongoCollectionTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/MongoParentTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unit-test-best-practice/src/main/resources/AAA.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unit-test-best-practice/src/main/resources/BBB.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unit-test-best-practice/src/main/resources/CCC.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unit-test-best-practice/src/test/java/com/best/practice/unittest/service/impl/EmailBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/unit-test-best-practice/src/test/java/com/best/practice/unittest/service/impl/htmlTest.java" afterDir="false" />
+    <list default="true" id="fc887e06-ef17-427d-a31e-0316022a9f97" name="Changes" comment="feat(transaction-practice): 添加 MongoDB 集合操作相关测试&#10;&#10;- 新增 MongoCollectionTests 类，实现 MongoDB 集合存在性、删除、创建等操作的测试&#10;- 新增 MongoParentTest 类作为 MongoDB 测试的基类&#10;- 在 UserCertDO 类中将 id 字段改为 _id&#10;- 在 UserDO 类中修正了几个字段的注解">
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/MongoDocumentTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/base/BaseBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/base/BaseDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/base/BaseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/base/BaseVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/dto/GraduateCertDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/dto/UserCertDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/entity/GraduateCertDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/entity/UserCertDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/entity/UserDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/vo/GraduateCertVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/vo/UserCertVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/domain/vo/UserVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/findApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/findApiTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/flatMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/flatMapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/funcInterface/FuncAndGeneric.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/funcInterface/FuncAndGeneric.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/groupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/groupTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/matchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/matchTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/parallerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/parallerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/peekTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/peekTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/sortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-practice/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/sortTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/transation-best-practice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/transation-best-practice/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/transation-best-practice/src/main/java/com/bestpratice/transation/domain/entity/UserCertDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/transation-best-practice/src/main/java/com/bestpratice/transation/domain/entity/UserCertDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transation-best-practice/src/main/java/com/bestpratice/transation/domain/entity/UserDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/transation-best-practice/src/main/java/com/bestpratice/transation/domain/entity/UserDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/MongoCollectionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/transation-best-practice/src/test/java/com/bestpratice/transation/MongoCollectionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transation-best-practice/src/test/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/transation-best-practice/src/test/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,15 +74,20 @@
     "JUnit.MongoCollectionTests.testCollectionExists.executor": "Run",
     "JUnit.MongoCollectionTests.testCreateCollection.executor": "Run",
     "JUnit.MongoCollectionTests.testDropCollection.executor": "Run",
+    "JUnit.MongoCollectionTests.testRenameCollection.executor": "Run",
+    "JUnit.MongoDocumentTests.testFindDocument.executor": "Run",
+    "JUnit.MongoDocumentTests.testInsert.executor": "Run",
     "Maven.BestPratice [clean].executor": "Run",
     "Maven.java-version-practice [clean].executor": "Run",
     "Maven.java-version-practice [compile].executor": "Run",
+    "Maven.transation-best-practice [clean].executor": "Run",
+    "Maven.transation-best-practice [compile].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/Workspace/practice/java-best-practice/transation-best-practice/src/test/resources",
+    "last_opened_file_path": "D:/Workspace/practice/java-best-practice/transation-best-practice/src/test/java/com/bestpratice/transation",
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -100,6 +103,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\practice\java-best-practice\transation-best-practice\src\test\java\com\bestpratice\transation" />
       <recent name="D:\Workspace\practice\java-best-practice\transation-best-practice\src\test\resources" />
     </key>
   </component>
@@ -110,51 +114,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MongoCollectionTests.testCreateCollection">
-    <configuration name="TransationApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.bestpratice.transation.TransationApp" />
-      <module name="transation-best-practice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bestpratice.transation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MongoCollectionTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="transation-best-practice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bestpratice.transation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bestpratice.transation" />
-      <option name="MAIN_CLASS_NAME" value="com.bestpratice.transation.MongoCollectionTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MongoCollectionTests.testCollectionExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="transation-best-practice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bestpratice.transation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bestpratice.transation" />
-      <option name="MAIN_CLASS_NAME" value="com.bestpratice.transation.MongoCollectionTests" />
-      <option name="METHOD_NAME" value="testCollectionExists" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.MongoDocumentTests.testFindDocument">
     <configuration name="MongoCollectionTests.testCreateCollection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="transation-best-practice" />
       <extension name="coverage">
@@ -187,13 +147,61 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MongoCollectionTests.testRenameCollection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="transation-best-practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bestpratice.transation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bestpratice.transation" />
+      <option name="MAIN_CLASS_NAME" value="com.bestpratice.transation.MongoCollectionTests" />
+      <option name="METHOD_NAME" value="testRenameCollection" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoDocumentTests.testFindDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="transation-best-practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bestpratice.transation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bestpratice.transation" />
+      <option name="MAIN_CLASS_NAME" value="com.bestpratice.transation.MongoDocumentTests" />
+      <option name="METHOD_NAME" value="testFindDocument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MongoDocumentTests.testInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="transation-best-practice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bestpratice.transation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bestpratice.transation" />
+      <option name="MAIN_CLASS_NAME" value="com.bestpratice.transation.MongoDocumentTests" />
+      <option name="METHOD_NAME" value="testInsert" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MongoDocumentTests.testFindDocument" />
+        <item itemvalue="JUnit.MongoDocumentTests.testInsert" />
+        <item itemvalue="JUnit.MongoCollectionTests.testRenameCollection" />
         <item itemvalue="JUnit.MongoCollectionTests.testCreateCollection" />
         <item itemvalue="JUnit.MongoCollectionTests.testDropCollection" />
-        <item itemvalue="JUnit.MongoCollectionTests.testCollectionExists" />
-        <item itemvalue="JUnit.MongoCollectionTests" />
-        <item itemvalue="应用程序.TransationApp" />
       </list>
     </recent_temporary>
   </component>
@@ -272,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752771547413</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat(transaction-practice): 添加 MongoDB 集合操作相关测试&#10;&#10;- 新增 MongoCollectionTests 类，实现 MongoDB 集合存在性、删除、创建等操作的测试&#10;- 新增 MongoParentTest 类作为 MongoDB 测试的基类&#10;- 在 UserCertDO 类中将 id 字段改为 _id&#10;- 在 UserDO 类中修正了几个字段的注解">
+      <option name="closed" value="true" />
+      <created>1754214318867</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1754214318867</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,7 +340,8 @@
     <MESSAGE value="refactor(unit-test): fix merge conflict&#10;&#10;- 移除了 DemoController 中的冗余代码- 更新了项目中的编码设置，增加了多个模块的 UTF-8编码配置&#10;- 修改了 Maven 项目管理设置，指定了自定义的 Maven 家目录和本地仓库&#10;- 更新了 IDE 工作空间设置，包括变更列表、Git 设置、运行配置等" />
     <MESSAGE value="feat(java-version): 添加函数式接口与泛型示例&#10;&#10;- 新增 FuncAndGeneric 类，演示使用函数式接口和泛型进行参数校验&#10;- 实现了对用户信息（姓名、年龄、邮箱、性别）的校验逻辑&#10;- 通过函数式接口优化了传统的校验方法，提高了代码复用性和可读性- 添加了注释和测试用例，便于理解和验证代码功能" />
     <MESSAGE value="feat(java-version): add example of functional interfaces and generics&#10;- Added FuncAndGeneric class to demonstrate the use of functional interfaces and generics for parameter validation&#10;- Implemented validation logic for user information (name, age, email, gender)&#10;Optimized traditional validation methods using functional interfaces, improving code reusability and readability&#10;- Added comments and test cases for better understanding and code verification" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(java-version): add example of functional interfaces and generics&#10;- Added FuncAndGeneric class to demonstrate the use of functional interfaces and generics for parameter validation&#10;- Implemented validation logic for user information (name, age, email, gender)&#10;Optimized traditional validation methods using functional interfaces, improving code reusability and readability&#10;- Added comments and test cases for better understanding and code verification" />
+    <MESSAGE value="feat(transaction-practice): 添加 MongoDB 集合操作相关测试&#10;&#10;- 新增 MongoCollectionTests 类，实现 MongoDB 集合存在性、删除、创建等操作的测试&#10;- 新增 MongoParentTest 类作为 MongoDB 测试的基类&#10;- 在 UserCertDO 类中将 id 字段改为 _id&#10;- 在 UserDO 类中修正了几个字段的注解" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(transaction-practice): 添加 MongoDB 集合操作相关测试&#10;&#10;- 新增 MongoCollectionTests 类，实现 MongoDB 集合存在性、删除、创建等操作的测试&#10;- 新增 MongoParentTest 类作为 MongoDB 测试的基类&#10;- 在 UserCertDO 类中将 id 字段改为 _id&#10;- 在 UserDO 类中修正了几个字段的注解" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

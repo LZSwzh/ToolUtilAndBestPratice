@@ -1,8 +1,6 @@
 package com.bestpratice.transation.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.bestpratice.transation.domain.base.BaseDO;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;

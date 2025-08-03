@@ -7,4 +7,4 @@ spring:
     password: mysql@transaction_db
   data:
     mongodb:
-      uri: mongodb://root:~wayyn0206@localhost:27017/transaction_mongo?authSource=admin
+      uri: mongodb://root:~wayyn0206@localhost:27017/transaction_mongo?authSource=admin&serverTimezone=GMT%2B8

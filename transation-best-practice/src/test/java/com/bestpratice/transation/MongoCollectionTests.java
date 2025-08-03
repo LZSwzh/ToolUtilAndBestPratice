@@ -131,4 +131,25 @@ public class MongoCollectionTests extends MongoParentTest{
             mongoTemplate.createCollection("test_user2", documentOptions);
         }
     }
+
+    /**
+     * 重命名集合,springboot-data-mongo没有提供直接重命名的方法
+     * 只能自己写原生命令runCommand
+     */
+    @Test
+    public void testRenameCollection(){
+
+        String oldName = "test_user2";
+        String newName = "test_user3";
+        // 获取数据库
+        MongoDatabase db = mongoTemplate.getDb();
+
+        // 获取admin数据库，因为rename操作必须在这个库执行
+        MongoDatabase adminDb = mongoTemplate.getMongoDatabaseFactory().getMongoDatabase("admin");
+
+        // 执行 renameCollection 命令
+        adminDb.runCommand(new Document("renameCollection", db.getName() + "." + oldName)
+                .append("to", db.getName() + "." + newName)
+                .append("dropTarget", false)); // 如果目标集合已存在是否删除
+    }
 }
