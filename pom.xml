@@ -14,13 +14,13 @@
         <module>design-model-practice</module>
         <module>transation-best-practice</module>
         <module>http-client-best-practice</module>
-        <module>transation-best-practice</module>
         <module>redis-best-pratice</module>
         <module>daily-algorithms-pratice</module>
         <module>daily-tool-practice</module>
         <module>java-version-practice</module>
         <module>interface-type-practice</module>
         <module>unit-test-best-practice</module>
+        <module>commn-best-practice</module>
     </modules>
 
     <properties>
@@ -45,5 +45,11 @@
           <artifactId>hutool-all</artifactId>
           <version>5.8.22</version>
       </dependency>
+      <dependency>
+          <groupId>io.springfox</groupId>
+          <artifactId>springfox-boot-starter</artifactId>
+          <version>3.0.0</version>
+      </dependency>
+
   </dependencies>
 </project>

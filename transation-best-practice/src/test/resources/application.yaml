@@ -1,10 +1,23 @@
 server:
   port: 8089
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     url: jdbc:mysql://localhost:3306/transaction_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: best_practice
     password: mysql@transaction_db
   data:
     mongodb:
-      uri: mongodb://root:~wayyn0206@localhost:27017/transaction_mongo?authSource=admin&serverTimezone=GMT%2B8
+      uri: mongodb://root:~wayyn0206@localhost:27017/transaction_mongo?authSource=admin
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          support:
+            JdbcTransactionManager: DEBUG
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

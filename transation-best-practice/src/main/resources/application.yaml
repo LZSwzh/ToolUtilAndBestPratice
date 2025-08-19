@@ -1,6 +1,9 @@
 server:
   port: 8089
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     url: jdbc:mysql://localhost:3306/transaction_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
     username: best_practice
@@ -8,3 +11,24 @@ spring:
   data:
     mongodb:
       uri: mongodb://root:~wayyn0206@localhost:27017/transaction_mongo?authSource=admin
+logging:
+  level:
+    com:
+      baomidou:
+        mybatis:
+          spring: DEBUG
+    org:
+      springframework:
+        jdbc:
+          support:
+            JdbcTransactionManager: INFO
+
+#    # MyBatis Plus SQL日志
+#    com.baomidou.mybatisplus: DEBUG
+#
+#    # 数据库连接池日志
+#    com.zaxxer.hikari: DEBUG
+#
+#    # JDBC日志（可选，非常详细）
+#    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+#    org.springframework.jdbc.core.StatementCreatorUtils: TRACE
