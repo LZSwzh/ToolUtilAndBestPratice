@@ -13,8 +13,15 @@ import com.best.practice.transaction.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionException;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+import org.springframework.transaction.support.TransactionSynchronization;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import javax.annotation.Resource;
@@ -42,16 +49,20 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        log.info("Parent transaction started: {}", TransactionSynchronizationManager.getCurrentTransactionName());
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
-        //外部调用,注解生效,使用传播方式为REQUIRES_NEW，开启新的事务，二者不干扰
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
-        orderItemService.saveBatchWithRequire(orderItemList);
+        //note:手动try-catch测试和NESTED的区别,即使手动try-catch，如果子事务异常尝试捕获
+        //note:会出现Transaction rolled back because it has been marked as rollback-onl，意思标记这个事务只能回滚无法提交
+        try {
+            orderItemService.saveBatchWithRequire(orderItemList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //note:模拟异常的出现，观察两个事务注解控制的方法的回滚行为。
         // 第一个内部调用，切面无法管理，因此仍然被这个方法的事务管理
         // 由于第二个service的方法是REQUIRE_NEW,因此尽管出现异常，但是子方法用的是新的事务，和这个无关。
-        System.out.println(3/0);
+//        System.out.println(3/0);
     }
 
     /**
@@ -64,16 +75,19 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        log.info("Parent transaction started: {}", TransactionSynchronizationManager.getCurrentTransactionName());
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
         //外部调用,注解生效,使用传播方式为REQUIRES_NEW，开启新的事务，二者不干扰
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
-        orderItemService.saveBatchWithRequestNew(orderItemList);
+        try {
+            orderItemService.saveBatchWithRequestNew(orderItemList);
+        } catch (Exception e) {
+            log.error("子方法异常：{}", e.getMessage());
+        }
         //note:模拟异常的出现，观察两个事务注解控制的方法的回滚行为。
         // 第一个内部调用，切面无法管理，因此仍然被这个方法的事务管理
         // 由于第二个service的方法是REQUIRE_NEW,因此尽管出现异常，但是子方法用的是新的事务，和这个无关。
-        System.out.println(3/0);
+//        System.out.println(3/0);
     }
 
 
@@ -102,7 +116,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        log.info("Parent transaction started: {}", TransactionSynchronizationManager.getCurrentTransactionName());
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
         //外部调用,注解生效,使用传播方式为REQUIRES_NEW，开启新的事务，二者不干扰
@@ -123,7 +136,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        log.info("Parent transaction started: {}", TransactionSynchronizationManager.getCurrentTransactionName());
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
         //外部调用,注解生效,使用传播方式为NOT_SUPPORTED,挂起当前事务并以非事务方式执行,也就是子事务的异常不会回滚子事务，但会回滚父事务
@@ -141,7 +153,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        log.info("Parent transaction started: {}", TransactionSynchronizationManager.getCurrentTransactionName());
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
         //外部调用,注解生效,使用传播方式为NOT_SUPPORTED,挂起当前事务并以非事务方式执行,也就是子事务的异常不会回滚子事务，但会回滚父事务
@@ -162,7 +173,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        log.info("Parent transaction started: {}", TransactionSynchronizationManager.getCurrentTransactionName());
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
         //外部调用,注解生效,使用传播方式为NOT_SUPPORTED,挂起当前事务并以非事务方式执行,也就是子事务的异常不会回滚子事务，但会回滚父事务
@@ -173,20 +183,76 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
     /**
      * 如果上下存在事务，则开启一个嵌套驶入，父方法异常，二者都会滚，子方法异常只回滚子方法
      * @param orderVO
+     *
      */
+    //note:当上下文存在事务时，外层事务异常回滚会同时回滚内层事务;如果内层方法异常，在外部捕获的话，外层就不回滚，而REQUIRED不管是否捕获都回滚
+    //note：当上下文不存在事务，会新建一个事务
     @Override
     @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
     public void createOrderWithNested(OrderVO orderVO) {
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        log.info("Parent transaction started: {}", TransactionSynchronizationManager.getCurrentTransactionName());
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
         //外部调用,注解生效,使用传播方式为REQUIRES_NEW，开启新的事务，二者不干扰
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
+        //note:测试子任务异常和REQUIRED的区别，这个手动捕获就没事了，默认的即使捕获主方法仍回滚
+        try {
+            orderItemService.saveBatchWithNested(orderItemList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //note:模拟异常的出现，外部方法异常，二者都回滚
+//        System.out.println(3/0);
+    }
+
+    /**
+     * 创建订单，内部调用事务同步管理器。注意同步管理器需要事务机制
+     * @param orderVO
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
+    public void createOrderWithTransactionSyncManager(OrderVO orderVO) {
+        if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
+            throw new MissParamException("订单或订单明细");
+        }
+        insertOrderVO(orderVO);
+        List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
         orderItemService.saveBatchWithNested(orderItemList);
-        //note:模拟异常的出现，观察两个事务注解控制的方法的回滚行为。
-        System.out.println(3/0);
+
+
+        //note:使用afterCommit钩子，事务提交之后执行这个操作
+        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {
+            @Override
+            public void afterCommit() {
+//                TransactionSynchronization.super.afterCommit();
+                log.info("订单创建成功,尝试发送邮件..........to:xxxxxxxxxx@163.com");
+            }
+        });
+    }
+
+    @Resource
+    private PlatformTransactionManager transactionManager;
+    /**
+     * 编程式事务
+     * @param orderVO
+     */
+    @Override
+    public void createOrderWithManualTransaction(OrderVO orderVO) {
+        //事务的定义信息,可以填充一些事务的相关配置
+        DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
+        //设置隔离级别
+        defaultTransactionDefinition.setIsolationLevel(TransactionDefinition.ISOLATION_READ_COMMITTED);
+        //设置传播行为
+        defaultTransactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+        TransactionStatus transactionStatus = transactionManager.getTransaction(defaultTransactionDefinition);
+
+        try {
+            transactionManager.commit(transactionStatus);
+        } catch (TransactionException e) {
+            log.error("事务提交失败,准备回滚", e);
+            transactionManager.rollback(transactionStatus);
+        }
     }
 }

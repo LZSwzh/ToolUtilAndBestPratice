@@ -27,10 +27,12 @@ public class OrderItemServiceImpl extends ServiceImpl<OrderItemMapper, OrderItem
     @Override
     @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRES_NEW)
     public void saveBatchWithRequestNew(List<OrderItemVO> orderItemVOList) {
-        ArrayList<OrderItemEntity> entities = new ArrayList<>();
-        log.info("Child transaction started: {}", TransactionSynchronizationManager.getCurrentTransactionName());
-        log.info("Is actual transaction active: {}", TransactionSynchronizationManager.isActualTransactionActive());
+        //note:模拟子方法异常
+        int idx = 0;
         for(OrderItemVO orderItemVO:orderItemVOList){
+            if (idx++>0){
+                System.out.println(3/0);
+            }
             OrderItemEntity entity = modelMapper.map(orderItemVO, OrderItemEntity.class);
             baseMapper.insert(entity);
             orderItemVO.setOrderItemId(entity.getOrderItemId());
@@ -45,6 +47,7 @@ public class OrderItemServiceImpl extends ServiceImpl<OrderItemMapper, OrderItem
         log.info("Is actual transaction active: {}", TransactionSynchronizationManager.isActualTransactionActive());
         for(OrderItemVO orderItemVO:orderItemList){
             OrderItemEntity entity = modelMapper.map(orderItemVO, OrderItemEntity.class);
+            System.out.println(3/0);
             baseMapper.insert(entity);
             orderItemVO.setOrderItemId(entity.getOrderItemId());
         }
@@ -109,9 +112,10 @@ public class OrderItemServiceImpl extends ServiceImpl<OrderItemMapper, OrderItem
     public void saveBatchWithNested(List<OrderItemVO> orderItemList) {
         int i=0;
         for(OrderItemVO orderItemVO:orderItemList){
-//            if (i++>0){
-//                System.out.println(3/0);
-//            }
+            //note:模拟异常，内部方法异常，只会滚内部的
+            if (i++>0){
+                System.out.println(3/0);
+            }
             OrderItemEntity entity = modelMapper.map(orderItemVO, OrderItemEntity.class);
             baseMapper.insert(entity);
             orderItemVO.setOrderItemId(entity.getOrderItemId());

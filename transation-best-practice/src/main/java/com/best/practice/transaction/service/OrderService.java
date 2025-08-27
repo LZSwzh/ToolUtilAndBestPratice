@@ -26,4 +26,12 @@ public interface OrderService extends IService<OrderEntity> {
     void createOrderWithNever(OrderVO orderVO);
 
     void createOrderWithNested(OrderVO orderVO);
+
+    /**
+     * 使用TransactionSynchronizationManager手动管理一些行文
+     * @param orderVO
+     */
+    void createOrderWithTransactionSyncManager(OrderVO orderVO);
+
+    void createOrderWithManualTransaction(OrderVO orderVO);
 }

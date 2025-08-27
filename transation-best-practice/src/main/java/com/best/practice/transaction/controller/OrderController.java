@@ -17,4 +17,13 @@ public class OrderController {
     public void createOrderWithRequestNew(@RequestBody OrderVO orderVO) {
         orderService.createOrderWithRequireNew(orderVO);
     }
+
+    /**
+     * 使用TransactionSyncManager手动管理一些事务
+     * @param orderVO
+     */
+    @PostMapping(value = "restful/order/createWithTransactionSyncManager")
+    public void createOrderWithTransactionSyncManager(@RequestBody OrderVO orderVO) {
+        orderService.createOrderWithTransactionSyncManager(orderVO);
+    }
 }
