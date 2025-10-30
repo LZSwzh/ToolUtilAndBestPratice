@@ -33,5 +33,14 @@ public interface OrderService extends IService<OrderEntity> {
      */
     void createOrderWithTransactionSyncManager(OrderVO orderVO);
 
-    void createOrderWithManualTransaction(OrderVO orderVO);
+    /**
+     * 使用PlatformTransactionManager手动管理一些事务
+     * PlatformTransactionManager是事务的管理器，除此外Spring还提供工具类：TransactionTemplate
+     * @param orderVO
+     */
+    void createOrderWithPlatformTxManager(OrderVO orderVO);
+
+    void createOrderWithTxTemplate(OrderVO orderVO);
+
+    void createOrderWithTxTemplateCallBack(OrderVO orderVO);
 }

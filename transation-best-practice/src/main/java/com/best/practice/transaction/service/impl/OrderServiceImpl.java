@@ -1,7 +1,6 @@
 package com.best.practice.transaction.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.best.practice.common.exception.MissParamException;
 import com.best.practice.transaction.domain.entity.OrderEntity;
@@ -15,14 +14,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
-import org.springframework.transaction.TransactionException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
-import org.springframework.transaction.support.TransactionSynchronization;
-import org.springframework.transaction.support.TransactionSynchronizationAdapter;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
+import org.springframework.transaction.support.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -232,27 +227,100 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         });
     }
 
+
     @Resource
-    private PlatformTransactionManager transactionManager;
+    private PlatformTransactionManager platformTransactionManager;
+    @Override
+    public void createOrderWithPlatformTxManager(OrderVO orderVO) {
+        //生命事务定义
+        DefaultTransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
+        //设置隔离级别为读已提交
+        transactionDefinition.setIsolationLevel(TransactionDefinition.ISOLATION_READ_COMMITTED);
+        //设置传播行为为REQUIRED
+        transactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+        TransactionStatus transactionStatus = platformTransactionManager.getTransaction(transactionDefinition);
+        try {
+            //note:业务代码
+            if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
+                throw new MissParamException("订单或订单明细");
+            }
+            insertOrderVO(orderVO);
+            List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
+            orderItemService.saveBatchWithNested(orderItemList);
+            //note:提交事务
+            platformTransactionManager.commit(transactionStatus);
+        } catch (Exception e) {
+            e.printStackTrace();
+            //note:回滚事务
+            platformTransactionManager.rollback(transactionStatus);
+        }
+    }
+
+    @Resource
+    private TransactionTemplate transactionTemplate;
+
     /**
-     * 编程式事务
+     * doInTransactionWithoutResult方法，执行一个无返回值的事务操作
      * @param orderVO
      */
     @Override
-    public void createOrderWithManualTransaction(OrderVO orderVO) {
-        //事务的定义信息,可以填充一些事务的相关配置
-        DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
-        //设置隔离级别
-        defaultTransactionDefinition.setIsolationLevel(TransactionDefinition.ISOLATION_READ_COMMITTED);
-        //设置传播行为
-        defaultTransactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
-        TransactionStatus transactionStatus = transactionManager.getTransaction(defaultTransactionDefinition);
-
-        try {
-            transactionManager.commit(transactionStatus);
-        } catch (TransactionException e) {
-            log.error("事务提交失败,准备回滚", e);
-            transactionManager.rollback(transactionStatus);
-        }
+    public void createOrderWithTxTemplate(OrderVO orderVO) {
+        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+            @Override
+            protected void doInTransactionWithoutResult(TransactionStatus status) {
+                if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
+                    throw new MissParamException("订单或订单明细");
+                }
+                try {
+                    insertOrderVO(orderVO);
+                    List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
+                    orderItemService.saveBatchWithNested(orderItemList);
+                } catch (Exception e) {
+                    //标记事务回滚
+                    status.setRollbackOnly();
+                    throw e;
+                }
+            }
+        });
     }
+
+    /**
+     * doInTransaction方法，执行一个有返回值的事务操作
+     * @param orderVO
+     */
+    @Override
+    public void createOrderWithTxTemplateCallBack(OrderVO orderVO) {
+        //直接通过事务模板设置一些事务属性
+        transactionTemplate.setIsolationLevel(TransactionDefinition.ISOLATION_READ_COMMITTED);
+        //拿到事务执行后的返回结果
+        OrderVO result = transactionTemplate.execute(new TransactionCallback<OrderVO>() {
+            @Override
+            public OrderVO doInTransaction(TransactionStatus status) {
+                if (Objects.isNull(orderVO) || CollUtil.isEmpty(orderVO.getOrderItemList())) {
+                    throw new MissParamException("订单或订单明细");
+                }
+                insertOrderVO(orderVO);
+                List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
+                orderItemService.saveBatchWithNested(orderItemList);
+                return orderVO;
+            }
+        });
+    }
+    //note:lambda表达式简化上述方法的实现
+    public void createOrderWithTxTemplateCallBack2(OrderVO orderVO) {
+        //直接通过事务模板设置一些事务属性
+        transactionTemplate.setIsolationLevel(TransactionDefinition.ISOLATION_READ_COMMITTED);
+        //拿到事务执行后的返回结果
+        OrderVO orderResult = transactionTemplate.execute(status -> {
+            if (Objects.isNull(orderVO) || CollUtil.isEmpty(orderVO.getOrderItemList())) {
+                throw new MissParamException("订单或订单明细");
+            }
+            insertOrderVO(orderVO);
+            List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
+            orderItemService.saveBatchWithNested(orderItemList);
+            return orderVO;
+        });
+    }
+
+
 }
