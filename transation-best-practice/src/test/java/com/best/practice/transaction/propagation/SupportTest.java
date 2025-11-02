@@ -1,5 +1,7 @@
 package com.best.practice.transaction.propagation;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.best.practice.transaction.domain.vo.OrderItemVO;
 import com.best.practice.transaction.domain.vo.OrderVO;
 import com.best.practice.transaction.service.OrderService;
@@ -34,20 +36,20 @@ public class SupportTest extends PropagationParentTest{
         orderItemVO.setVersion(1);
 
         OrderItemVO orderItemVO2 = new OrderItemVO();
-        orderItemVO.setOrderItemId(null);
-        orderItemVO.setOrderId(null);
-        orderItemVO.setProductId(2);
-        orderItemVO.setSkuId(1);
-        orderItemVO.setSkuName("SKU-3-1");
-        orderItemVO.setItemQty(2);
-        orderItemVO.setSkuUnitPrice(new BigDecimal("10"));
-        orderItemVO.setDiscount(new BigDecimal("0"));
-        orderItemVO.setActualPrice(new BigDecimal("10"));
-        orderItemVO.setCreatedBy(1);
-        orderItemVO.setCreatedDate(LocalDateTime.now());
-        orderItemVO.setUpdatedBy(1);
-        orderItemVO.setUpdatedDate(LocalDateTime.now());
-        orderItemVO.setVersion(1);
+        orderItemVO2.setOrderItemId(null);
+        orderItemVO2.setOrderId(null);
+        orderItemVO2.setProductId(2);
+        orderItemVO2.setSkuId(1);
+        orderItemVO2.setSkuName("SKU-3-1");
+        orderItemVO2.setItemQty(2);
+        orderItemVO2.setSkuUnitPrice(new BigDecimal("10"));
+        orderItemVO2.setDiscount(new BigDecimal("0"));
+        orderItemVO2.setActualPrice(new BigDecimal("10"));
+        orderItemVO2.setCreatedBy(1);
+        orderItemVO2.setCreatedDate(LocalDateTime.now());
+        orderItemVO2.setUpdatedBy(1);
+        orderItemVO2.setUpdatedDate(LocalDateTime.now());
+        orderItemVO2.setVersion(1);
 
         OrderVO orderVO = new OrderVO();
         orderVO.setOrderId(null);
@@ -62,6 +64,7 @@ public class SupportTest extends PropagationParentTest{
         orderVO.setUpdatedDate(LocalDateTime.now());
         orderVO.setVersion(1);
         orderVO.setOrderItemList(Lists.newArrayList(orderItemVO,orderItemVO2));
+        System.out.printf("Supports隔离级别参数:{%s}", JSON.toJSONString(orderVO, SerializerFeature.PrettyFormat));
         orderService.createOrderWithSupport(orderVO);
     }
 

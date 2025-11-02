@@ -1,5 +1,7 @@
 package com.best.practice.transaction.propagation;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.best.practice.transaction.domain.vo.OrderItemVO;
 import com.best.practice.transaction.domain.vo.OrderVO;
 import com.best.practice.transaction.service.OrderService;
@@ -60,6 +62,7 @@ public class NestedTest extends PropagationParentTest{
         orderVO.setUpdatedDate(LocalDateTime.now());
         orderVO.setVersion(1);
         orderVO.setOrderItemList(Lists.newArrayList(orderItemVO,orderItemVO2));
+        System.out.printf("NESTED参数:{%s}", JSON.toJSONString(orderVO, SerializerFeature.PrettyFormat));
         orderService.createOrderWithNested(orderVO);
     }
 }

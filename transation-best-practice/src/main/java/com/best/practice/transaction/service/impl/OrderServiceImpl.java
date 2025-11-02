@@ -47,16 +47,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
-        //note:手动try-catch测试和NESTED的区别,即使手动try-catch，如果子事务异常尝试捕获
+        //note:如果子方法可能异常,手动try-catch测试和NESTED的区别,即使手动try-catch，如果子事务异常尝试捕获
         //note:会出现Transaction rolled back because it has been marked as rollback-onl，意思标记这个事务只能回滚无法提交
         try {
             orderItemService.saveBatchWithRequire(orderItemList);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //note:模拟异常的出现，观察两个事务注解控制的方法的回滚行为。
-        // 第一个内部调用，切面无法管理，因此仍然被这个方法的事务管理
-        // 由于第二个service的方法是REQUIRE_NEW,因此尽管出现异常，但是子方法用的是新的事务，和这个无关。
+        //note:Required隔离级别下，父方法出现异常，两个方法同时回滚.
 //        System.out.println(3/0);
     }
 
@@ -70,7 +68,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
         //外部调用,注解生效,使用传播方式为REQUIRES_NEW，开启新的事务，二者不干扰
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
@@ -79,9 +76,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         } catch (Exception e) {
             log.error("子方法异常：{}", e.getMessage());
         }
-        //note:模拟异常的出现，观察两个事务注解控制的方法的回滚行为。
-        // 第一个内部调用，切面无法管理，因此仍然被这个方法的事务管理
-        // 由于第二个service的方法是REQUIRE_NEW,因此尽管出现异常，但是子方法用的是新的事务，和这个无关。
+        //note:模拟父异常的出现,出现父异常，子方法不会回滚，父方法回滚
 //        System.out.println(3/0);
     }
 
@@ -106,19 +101,18 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
      * 传播方式：存在事务则加入，不存在则以非事务方式执行
      */
     @Override
-//    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
+    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
     public void createOrderWithSupport(OrderVO orderVO) {
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        //内部调用，事务注解不会生效
-        insertOrderVO(orderVO);
-        //外部调用,注解生效,使用传播方式为REQUIRES_NEW，开启新的事务，二者不干扰
+        OrderEntity orderEntity = modelMapper.map(orderVO, OrderEntity.class);
+        baseMapper.insert(orderEntity);
+        orderVO.setOrderId(orderEntity.getOrderId());
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
         orderItemService.saveBatchWithSupports(orderItemList);
-        //note:模拟异常的出现，观察两个事务注解控制的方法的回滚行为。
-        // 第一个内部调用，切面无法管理，因此仍然被这个方法的事务管理
-        // 由于第二个service的方法是REQUIRE_NEW,因此尽管出现异常，但是子方法用的是新的事务，和这个无关。
+        //note:外部异常，如果当前上下文存在事务子方法以事务方法执行，因此夫方法异常子方法回滚。
+        System.out.println(3/0);
     }
 
     /**
@@ -131,11 +125,12 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
         //外部调用,注解生效,使用传播方式为NOT_SUPPORTED,挂起当前事务并以非事务方式执行,也就是子事务的异常不会回滚子事务，但会回滚父事务
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
         orderItemService.saveBatchWithNotSupported(orderItemList);
+        //note:外部异常，NOT_SUPPORTED不支持事务，会挂起上下文的，因此仅回滚父
+        System.out.println(3/0);
     }
 
     /**
@@ -144,13 +139,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
      * @param orderVO
      */
     @Override
+//    @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
     public void createOrderWithMandatory(OrderVO orderVO) {
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
-        //外部调用,注解生效,使用传播方式为NOT_SUPPORTED,挂起当前事务并以非事务方式执行,也就是子事务的异常不会回滚子事务，但会回滚父事务
+        //外部调用,注解生效,使用传播方式为MANDATORY,加入当前事务
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
         orderItemService.saveBatchWithMandatory(orderItemList);
     }
@@ -170,7 +166,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         }
         //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
-        //外部调用,注解生效,使用传播方式为NOT_SUPPORTED,挂起当前事务并以非事务方式执行,也就是子事务的异常不会回滚子事务，但会回滚父事务
+        //note:传播方式为NEVER,如果上下文存在事务直接报错
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
         orderItemService.saveBatchWithNever(orderItemList);
     }
@@ -180,7 +176,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
      * @param orderVO
      *
      */
-    //note:当上下文存在事务时，外层事务异常回滚会同时回滚内层事务;如果内层方法异常，在外部捕获的话，外层就不回滚，而REQUIRED不管是否捕获都回滚
+    //note:当上下文存在事务时，外层事务异常回滚会同时回滚内层事务;如果内层方法异常，在外部捕获的话，外层就不回滚，而REQUIRED不能catch
     //note：当上下文不存在事务，会新建一个事务
     @Override
     @Transactional(rollbackFor = Exception.class,propagation = Propagation.REQUIRED)
@@ -188,9 +184,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, OrderEntity> impl
         if (Objects.isNull(orderVO)|| CollUtil.isEmpty(orderVO.getOrderItemList())){
             throw new MissParamException("订单或订单明细");
         }
-        //内部调用，事务注解不会生效
         insertOrderVO(orderVO);
-        //外部调用,注解生效,使用传播方式为REQUIRES_NEW，开启新的事务，二者不干扰
         List<OrderItemVO> orderItemList = orderVO.getOrderItemList();
         //note:测试子任务异常和REQUIRED的区别，这个手动捕获就没事了，默认的即使捕获主方法仍回滚
         try {

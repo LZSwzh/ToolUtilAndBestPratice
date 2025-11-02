@@ -1,5 +1,6 @@
 package com.best.practice.transaction.propagation;
 
+import com.alibaba.fastjson.JSON;
 import com.best.practice.transaction.domain.vo.OrderItemVO;
 import com.best.practice.transaction.domain.vo.OrderVO;
 import com.best.practice.transaction.service.OrderService;
@@ -62,7 +63,7 @@ public class RequireNewTest extends PropagationParentTest{
         orderVO.setVersion(1);
         orderVO.setOrderItemList(Lists.newArrayList(orderItemVO,orderItemVO2));
 
-//        System.out.println(JSON.toJSONString(orderVO));
+        System.out.printf("REQUIRES_NEW的参数:{%s}", JSON.toJSONString(orderVO));
         orderService.createOrderWithRequireNew(orderVO);
     }
 }

@@ -1,5 +1,7 @@
 package com.best.practice.transaction.propagation;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.best.practice.transaction.domain.vo.OrderItemVO;
 import com.best.practice.transaction.domain.vo.OrderVO;
 import com.best.practice.transaction.service.OrderService;
@@ -44,6 +46,7 @@ public class NeverTest extends PropagationParentTest{
         orderVO.setUpdatedDate(LocalDateTime.now());
         orderVO.setVersion(1);
         orderVO.setOrderItemList(Lists.newArrayList(orderItemVO));
+        System.out.printf("NEVER参数:{%s}", JSON.toJSONString(orderVO, SerializerFeature.PrettyFormat));
         orderService.createOrderWithNever(orderVO);
     }
 }

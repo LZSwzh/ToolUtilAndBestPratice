@@ -11,11 +11,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAspectJAutoProxy
 @SpringBootApplication
 @EnableTransactionManagement
-public class TransationApp {
+public class TransactionApp {
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(TransationApp.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(TransactionApp.class, args);
         for(String beanName:context.getBeanDefinitionNames()){
             log.info(">>>>>>>>>>>>>>>>>>>>成功装配:{}<<<<<<<<<<<<<<<<<<<<",beanName);
         }
+        log.info(">>>>>>>>>>>>>>>>>>>>【TransactionApp启动成功】<<<<<<<<<<<<<<<<<<<<");
     }
 }

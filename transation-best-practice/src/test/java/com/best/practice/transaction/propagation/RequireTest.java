@@ -1,5 +1,7 @@
 package com.best.practice.transaction.propagation;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.best.practice.transaction.domain.vo.OrderItemVO;
 import com.best.practice.transaction.domain.vo.OrderVO;
 import com.best.practice.transaction.service.OrderService;
@@ -47,6 +49,7 @@ public class RequireTest extends PropagationParentTest{
         orderVO.setUpdatedDate(LocalDateTime.now());
         orderVO.setVersion(1);
         orderVO.setOrderItemList(Lists.newArrayList(orderItemVO));
+        System.out.printf("调用Required Demo:{%s}%n", JSON.toJSONString(orderVO, SerializerFeature.PrettyFormat));
         orderService.createOrderWithRequired(orderVO);
     }
 }

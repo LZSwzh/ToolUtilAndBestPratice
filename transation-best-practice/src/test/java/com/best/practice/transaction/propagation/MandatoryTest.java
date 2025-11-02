@@ -1,5 +1,7 @@
 package com.best.practice.transaction.propagation;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.best.practice.transaction.domain.vo.OrderItemVO;
 import com.best.practice.transaction.domain.vo.OrderVO;
 import com.best.practice.transaction.service.OrderService;
@@ -8,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 
 public class MandatoryTest extends PropagationParentTest{
@@ -46,6 +49,7 @@ public class MandatoryTest extends PropagationParentTest{
         orderVO.setUpdatedDate(LocalDateTime.now());
         orderVO.setVersion(1);
         orderVO.setOrderItemList(Lists.newArrayList(orderItemVO));
+        System.out.printf("NEVER参数:{%s}", JSON.toJSONString(orderVO, SerializerFeature.PrettyFormat));
         orderService.createOrderWithMandatory(orderVO);
     }
 }
