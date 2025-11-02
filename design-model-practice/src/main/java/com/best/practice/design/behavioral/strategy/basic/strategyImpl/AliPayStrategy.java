@@ -1,6 +1,6 @@
-package com.best.practice.design.basicImpl.action.strategyDesign.strategyImpl;
+package com.best.practice.design.behavioral.strategy.basic.strategyImpl;
 
-import com.best.practice.design.basicImpl.action.strategyDesign.PayStrategy;
+import com.best.practice.design.behavioral.strategy.basic.PayStrategy;
 
 import java.math.BigDecimal;
 

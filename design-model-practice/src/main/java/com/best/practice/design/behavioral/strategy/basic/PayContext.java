@@ -1,4 +1,4 @@
-package com.best.practice.design.basicImpl.action.strategyDesign;
+package com.best.practice.design.behavioral.strategy.basic;
 
 import java.math.BigDecimal;
 
