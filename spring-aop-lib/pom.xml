@@ -2,16 +2,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.best.pratice</groupId>
+        <groupId>com.best.practice</groupId>
         <artifactId>daily-practice</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.best.pratice.aop</groupId>
+    <groupId>com.best.practice.aop</groupId>
     <artifactId>spring-aop-lib</artifactId>
     <packaging>jar</packaging>
 
-    <name>aop-best-pratice</name>
+    <name>aop-best-practice</name>
     <url>http://maven.apache.org</url>
 
     <properties>

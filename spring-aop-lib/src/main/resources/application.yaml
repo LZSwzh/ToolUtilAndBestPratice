@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: aop-best-pratice
+    name: aop-best-practice
   redis:
     host: localhost # redis主机号
     port: 6379 #端口号

@@ -9,7 +9,7 @@
 #### 策略模式
 适用场景：
 - 存在多种算法变体，想要运行期间动态选择相应算法。同时拓展算法时更加灵活不需修改已有代码
-- 多重if判断(见com.best.pratice.design.basicImpl.action.strategyDesign.mutiIfOpti)
+- 多重if判断(见com.best.practice.design.basicImpl.action.strategyDesign.mutiIfOpti)
 - 运行时动态改变对象行为
 通常包括三类成员：
 - 上下文类

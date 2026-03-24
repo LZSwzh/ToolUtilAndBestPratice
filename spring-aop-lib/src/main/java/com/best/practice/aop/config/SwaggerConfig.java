@@ -17,7 +17,7 @@ public class SwaggerConfig {
 //                .paths(PathSelectors.any())
 //                .build()
 //                .apiInfo(apiInfo())
-//                .basePath("http://aop-best-pratice/api/");
+//                .basePath("http://aop-best-practice/api/");
 //    }
 
 }
