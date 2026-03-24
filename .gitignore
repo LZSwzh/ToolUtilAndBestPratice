@@ -4,14 +4,12 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea/
+!.idea/codeStyles/
+!.idea/inspectionProfiles/
 *.iws
 *.iml
 *.ipr
-target/
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -36,3 +34,9 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### AI Tools ###
+.claude/
+.cursor/
+.cursorhistory
+*.cursorproject
