@@ -1,4 +1,4 @@
-package com.best.practice;
+package com.best.practice.ai;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.best.practice.service;
+package com.best.practice.ai.service;
 
 import ai.z.openapi.ZhipuAiClient;
 import ai.z.openapi.core.Constants;

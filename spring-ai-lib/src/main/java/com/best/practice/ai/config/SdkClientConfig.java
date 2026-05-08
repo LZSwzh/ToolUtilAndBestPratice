@@ -1,13 +1,13 @@
-package com.best.practice.config;
+package com.best.practice.ai.config;
 
 import ai.z.openapi.ZhipuAiClient;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.PostConstruct;
 
 @Slf4j
 @Configuration
