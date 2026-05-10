@@ -15,6 +15,7 @@
         <module>coder-basics-lib</module>
         <module>spring-framework-lib</module>
         <module>spring-ai-lib</module>
+        <module>spring-webflux-lib</module>
     </modules>
 
     <properties>

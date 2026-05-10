@@ -5,53 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc887e06-ef17-427d-a31e-0316022a9f97" name="Changes" comment="refactor:项目结构优化">
-      <change beforePath="$PROJECT_DIR$/java-version-lib/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/funcInterface/ConsumerFun.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/funcInterface/ConsumerFun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/funcInterface/FuncAndGeneric.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/funcInterface/FuncAndGeneric.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/funcInterface/FunctionFun.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/funcInterface/FunctionFun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/funcInterface/PredicateFun.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/funcInterface/PredicateFun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/funcInterface/SupplierFun.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/funcInterface/SupplierFun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/findApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/stream/findApiTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/flatMapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/stream/flatMapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/groupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/stream/groupTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/matchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/stream/matchTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/parallerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/stream/parallerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/peekTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/stream/peekTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/bisic/stream/sortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/bisic/stream/sortTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/optional/NullTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/optional/NullTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/optional/OptionalApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/optional/OptionalApiTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk8/optional/OptionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk8/optional/OptionalTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk9/anonyclazz/anoyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk9/anonyclazz/anoyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk9/api/CollTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk9/api/CollTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk9/api/ProcessTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk9/api/ProcessTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk9/api/StreamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk9/api/StreamTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk9/api/StringTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk9/api/StringTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk9/api/tryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk9/api/tryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk9/inter/InterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk9/inter/InterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk9/jpms/JpmsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk9/jpms/JpmsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jdk9/jpms/module-info-z.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jdk9/jpms/module-info-z.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/juc/a_jmm/a_challenge/ContentSwitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/juc/a_jmm/a_challenge/ContentSwitch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/juc/a_jmm/a_challenge/ContentSwitch2.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/juc/a_jmm/a_challenge/ContentSwitch2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/juc/a_jmm/a_challenge/ContentSwitch3.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/juc/a_jmm/a_challenge/ContentSwitch3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/juc/a_jmm/a_challenge/DeadLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/juc/a_jmm/a_challenge/DeadLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/juc/b_concurrent_principle/volatile_principle/CpuCacheIneffective.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/juc/b_concurrent_principle/volatile_principle/CpuCacheIneffective.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/juc/b_concurrent_principle/volatile_principle/FakeSharing.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/juc/b_concurrent_principle/volatile_principle/FakeSharing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/juc/b_concurrent_principle/volatile_principle/PendingMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/juc/b_concurrent_principle/volatile_principle/PendingMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/juc/b_concurrent_principle/volatile_principle/PendingMemoryByContented.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/juc/b_concurrent_principle/volatile_principle/PendingMemoryByContented.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/java_version/jvm/JvmMemoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-version-lib/src/main/java/com/best/practice/version/jvm/JvmMemoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-webflux-lib/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-webflux-lib/src/main/java/com/best/practice/webflux/WebFluxApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-webflux-lib/src/main/java/com/best/practice/webflux/controller/ReactiveStreamController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-webflux-lib/src/main/java/com/best/practice/webflux/controller/ReactiveTypeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-webflux-lib/src/main/java/com/best/practice/webflux/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-webflux-lib/src/test/java/com/best/practice/webflux/WebFluxApplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-framework-lib/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-framework-lib/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-framework-lib/src/main/java/com/best/practice/transaction/aspect/IdempotentAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-framework-lib/src/main/java/com/best/practice/transaction/aspect/IdempotentAdvice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-middleware-lib/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-middleware-lib/src/main/java/com/best/practice/middleware/MidApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-middleware-lib/src/main/java/com/best/practice/middleware/domain/Demo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-middleware-lib/src/main/java/com/best/practice/middleware/mapper/DemoMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-middleware-lib/src/main/java/com/best/practice/middleware/service/DemoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-middleware-lib/src/main/java/com/best/practice/middleware/service/impl/DemoServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-middleware-lib/src/main/resources/application.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,10 +37,7 @@
     <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;wangzh630&quot;
-  }
+  &quot;lastFilter&quot;: {}
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
@@ -433,7 +392,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778395799866</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="refactor:项目结构优化">
+      <option name="closed" value="true" />
+      <created>1778413453415</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1778413453415</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -493,7 +460,8 @@
     <MESSAGE value="feat: Spring AI ChatClient api" />
     <MESSAGE value="feat(ai): 意图识别基本demo" />
     <MESSAGE value="feat(ai): LLM意图识别基本demo" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ai): LLM意图识别基本demo" />
+    <MESSAGE value="refactor:项目结构优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor:项目结构优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
