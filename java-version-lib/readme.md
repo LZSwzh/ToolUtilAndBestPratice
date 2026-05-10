@@ -33,9 +33,10 @@ JDK9
 ### 2.1.2.模块的创建
 1. 模块的创建
 在【main/java】路径下，可以写一个module-info.java文件，注意函数名和位置有要求
+
 ```java
 //JPMS是JDK9尝试引入的模块化特性
-module com.best.practice.java_version.jdk9.jpms {
+module com.best.practice.version.jdk9.jpms {
     /**
      * requires 表示当前模块依赖其他模块
      * 1、java.base 是JDK基础模块
@@ -53,15 +54,15 @@ module com.best.practice.java_version.jdk9.jpms {
     /**
      * exports:用于声明模块中可以被其他模块访问的包。要求包不能是空包【无java\properties等】
      */
-    exports com.best.practice.java_version.jdk9.jpms;
+    exports com.best.practice.version.jdk9.jpms;
     /**
      * exports...to...:限制包只对某些包可见
      */
-    exports com.best.practice.java_version.jdk9.anonyclazz to  com.best.practice.java_version.jdk9.inter;
+    exports com.best.practice.version.jdk9.anonyclazz to com.best.practice.version.jdk9.inter;
     /**
      * opens:声明模块中可以被其他模块反射访问的包。
      */;
-     opens com.best.practice.java_version.jdk9.inter;
+    opens com.best.practice.version.jdk9.inter;
 
     /**
      * provides:用于声明模块提供了服务接口的实现，但不指定服务提供者。
@@ -75,7 +76,7 @@ module com.best.practice.java_version.jdk9.jpms {
 # 编译
 $ javac -d bin src/module-info.java src/com/best/practice/java_version/*.java
 # 将bin下的文件打包成jar
-$ jar --create --file=module.jar --main-class=com.best.practice.java_version.jdk9.jpms.JpmsApplication -C bin .
+$ jar --create --file=module.jar --main-class=com.best.practice.version.jdk9.jpms.JpmsApplication -C bin .
 # 将打好的jar包转换成模块
 $ jmod create --class-path module.jar module.jmod
 ```

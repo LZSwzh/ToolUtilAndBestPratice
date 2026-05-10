@@ -32,8 +32,8 @@ public class IdempotentAdvice {
 
     /** 定义切点，匹配controller包下被Idempotent注解修饰的方法 */
     @Pointcut(
-            "execution(* com.best.practice.aop.idempotent.controller..*(..)) && " +
-            "@annotation(com.best.practice.aop.idempotent.anno.Idempotent)"
+            "execution(* com.best.practice.transaction.controller..*(..)) && " +
+            "@annotation(com.best.practice.transaction.anno.Idempotent)"
     )
     public void IdempotentPointCut(){}
 
