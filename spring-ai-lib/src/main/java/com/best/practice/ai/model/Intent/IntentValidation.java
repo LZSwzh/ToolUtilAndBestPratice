@@ -1,4 +1,4 @@
-package com.best.practice.ai.Intent;
+package com.best.practice.ai.model.Intent;
 
 import java.util.List;
 

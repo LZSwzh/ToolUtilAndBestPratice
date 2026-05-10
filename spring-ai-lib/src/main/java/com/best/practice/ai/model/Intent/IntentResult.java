@@ -1,4 +1,4 @@
-package com.best.practice.ai.Intent;
+package com.best.practice.ai.model.Intent;
 
 import org.springframework.util.StringUtils;
 
@@ -15,11 +15,12 @@ public record IntentResult (
      * 用 enum：BeanOutputConverter 会把 enum 的值列进 schema 的 enum 字段，模型只能从这几个选一个，避免天马行空
      */
     public enum Intent {
-        QUERY_WEATHER,    // 查天气
-        BOOK_FLIGHT,      // 订机票
-        PLAY_MUSIC,       // 播放音乐
-        SMALL_TALK,       // 闲聊（"晚上好"会落到这里）
-        UNKNOWN           // 无法识别
+        ENTERPRISE_KNOWLEDGE,   //  企业知识,比如
+        PERSONAL_ENTER_OPT,     //  个人操作,如查询我的代办,查询我的审批,帮我催办流程等等
+        PERSONAL_LOCAL_OPT,    //  本地的一些工具,比如excel转换,ppt生成等等
+        WORK_KNOWLEDGE,         //  世界知识
+        SMALL_TALK,             //  闲聊,
+        UNKNOWN                 //  无法识别
     }
 
     /**
@@ -35,9 +36,7 @@ public record IntentResult (
     public static IntentValidation validate(IntentResult result){
         //写死各个意图需要的槽位
         final Map<Intent, Set<String>> REQUIRED_SLOTS = Map.of(
-                Intent.QUERY_WEATHER, Set.of("city"),
-                Intent.BOOK_FLIGHT,   Set.of("from", "to", "date"),
-                Intent.PLAY_MUSIC,    Set.of()  // 无必填
+//                Intent.PERSONAL_ENTER_OPT,   Set.of("flowNum","flowName")
         );
         Set<String> required = REQUIRED_SLOTS.getOrDefault(result.intent(), Set.of());
         Map<String, String> slots = result.slots() == null ? Map.of() : result.slots();
