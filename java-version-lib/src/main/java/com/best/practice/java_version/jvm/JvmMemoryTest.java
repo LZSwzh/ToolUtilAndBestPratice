@@ -1,7 +1,7 @@
 package com.best.practice.java_version.jvm;
 
 /**
- * @author Nova007466
+ * @author wuwuw630
  */
 public class JvmMemoryTest {
     public static void main(String[] args) {

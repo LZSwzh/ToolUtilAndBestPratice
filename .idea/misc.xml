@@ -9,9 +9,13 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/basic-design-pattern-lib/pom.xml" />
+        <option value="$PROJECT_DIR$/basic-interface-type-lib/pom.xml" />
         <option value="$PROJECT_DIR$/daily-tool-practice/pom.xml" />
         <option value="$PROJECT_DIR$/http-client-best-practice/pom.xml" />
         <option value="$PROJECT_DIR$/redis-best-practice/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-aop-lib/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-test-lib/pom.xml" />
       </set>
     </option>
   </component>

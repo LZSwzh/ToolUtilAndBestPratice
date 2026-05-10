@@ -12,8 +12,8 @@ public class ProcessTest {
         System.out.println(currentProcess.info());
         /*
         [
-            user: Optional[NOVA\Nova007466],#Optional可选的
-            cmd: C: \Users\Nova007466\.jdks\azul-21.0.5\bin\java.exe,#JDK可执行文件
+            user: Optional[?],#Optional可选的
+            cmd: C: \Users\?\.jdks\azul-21.0.5\bin\java.exe,#JDK可执行文件
             startTime: Optional[2025-04-25T01: 33: 17.596Z],#进程启动时间
             totalTime: Optional[PT0.3125S]#进程运行总时间
         ]
