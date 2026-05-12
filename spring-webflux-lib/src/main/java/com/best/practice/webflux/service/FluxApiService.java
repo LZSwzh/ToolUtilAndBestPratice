@@ -1,27 +1,39 @@
 package com.best.practice.webflux.service;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 import reactor.util.function.Tuple2;
 
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 @Service
 public class FluxApiService {
     public static void main(String[] args) throws InterruptedException {
+        // 构造相关API
 //        new FluxApiService().createFluxByJust();
 //        new FluxApiService().createFluxByArray();
 //        new FluxApiService().createFluxByIter();
 //        new FluxApiService().createFluxByStream();
 //        new FluxApiService().createFluxByInterval();
 //        new FluxApiService().createFluxByRange();
-        new FluxApiService().composeFluxByMerge();
-        new FluxApiService().composeFluxByZip();
-        new FluxApiService().composeFluxByZipCustom();
-        new FluxApiService().composeFluxByFirst();
+        // 组合相关API
+//        new FluxApiService().composeFluxByMerge();
+//        new FluxApiService().composeFluxByZip();
+//        new FluxApiService().composeFluxByZipCustom();
+//        new FluxApiService().composeFluxByFirst();
+        // 转换相关API
+        new FluxApiService().convertFluxByMap();
+        new FluxApiService().convertFluxByFlatMap();
         Thread.sleep(6000); // 等待足够时间让 5 个元素发射完
     }
     /* =========================================== Flux的创建操作 ===========================================*/
@@ -123,15 +135,105 @@ public class FluxApiService {
         //
         Flux.firstWithSignal(tFlux,gFlux).doOnNext(System.out::println).blockLast();
     }
+    /* =========================================== Flux的过滤操作 ===========================================*/
+
+    /**
+     * skip(n):跳过n个元素，
+     * skip(Duration):根据传入时间跳过
+     * take(n):只取前n个元素
+     * take(Duration):根据传入时间选择
+     * filter(Predicate):过滤
+     * distinct：去重
+     */
     /* =========================================== Flux的转换操作 ===========================================*/
-    public void convertFlux(){
-        Flux<String> kFlux = Flux.just("k-1","k-2","k-3");
-        Flux<String> vFlux = Flux.just("v-1","v-2","v-3","v-4");
-        kFlux.zipWith(vFlux).doOnNext(System.out::println).blockLast();
+    //map: 同步一对一转换
+    public void convertFluxByMap(){
+        Flux<String> nameFlux = Flux.just("tom","jack","zhangsan");
+        Flux<Integer> ageFlux = Flux.just(23,33,21);
+        Flux<Tuple2<String, Integer>> tuple2Flux = nameFlux.zipWith(ageFlux);
+        Flux<User> userFlux = tuple2Flux.map(tuple -> {
+            return User.builder()
+                    .userName(tuple.getT1())
+                    .userAge(tuple.getT2())
+                    .build();
+        });
+        userFlux.doOnNext(System.out::println).blockLast();
+    }
+    //.flatMap(item -> mono/flux)  // 异步一对多，不保序
+    public void convertFluxByFlatMap(){
+        System.out.println("================================================");
+        Flux<String> nameFlux = Flux.just("tom","jack","zhangsan");
+        Flux<Integer> ageFlux = Flux.just(23,33,21);
+        Flux<Tuple2<String, Integer>> tuple2Flux = nameFlux.zipWith(ageFlux);
+        Flux<User> userFlux = tuple2Flux.flatMap(
+                n -> Mono.just(n)
+                        .map(t -> User.builder()
+                                .userName(t.getT1())
+                                .userAge(t.getT2())
+                                .build()
+                        ).log()
+                        .subscribeOn(Schedulers.parallel())
+
+        );
+        userFlux.doOnNext(System.out::println).blockLast();
+    }
+
+    /* =========================================== Flux的收集操作 ===========================================*/
+
+    // buffer(n): 将元素按指定数量分组，收集到 List 中
+    public void convertFluxByBuffer(){
+        Flux<String> fruitFlux = Flux.just("Apple", "Orange", "Banana", "Kiwi", "Grape");
+        // 每2个元素为一组
+        fruitFlux.buffer(2)
+                .doOnNext(batch -> System.out.println("buffer batch: " + batch))
+                .blockLast();
+    }
+
+    // collectList: 将 Flux 中所有元素收集为一个 List，返回 Mono<List<T>>
+    public void convertFluxByCollectList(){
+        Flux<String> fruitFlux = Flux.just("Apple", "Orange", "Banana");
+        Mono<List<String>> listMono = fruitFlux.collectList();
+        listMono.doOnNext(list -> System.out.println("collectList: " + list))
+                .block();
+    }
+
+    // collectMap: 将 Flux 中的元素收集为 Map，需要指定 key 提取函数
+    public void convertFluxByCollectMap(){
+        Flux<String> nameFlux = Flux.just("tom", "jack", "zhangsan");
+        Flux<Integer> ageFlux = Flux.just(23, 33, 21);
+        Flux<User> userFlux = nameFlux.zipWith(ageFlux, (name, age) ->
+                User.builder().userName(name).userAge(age).build()
+        );
+        // 以 userName 作为 key，User 对象作为 value
+        userFlux.collectMap(User::getUserName)
+                .doOnNext(map -> System.out.println("collectMap: " + map))
+                .block();
     }
 
     /* =========================================== Flux的逻辑操作 ===========================================*/
-    public void logicFlux(){
 
+    // any: 只要有一个元素满足条件就返回 true
+    public void logicFluxByAny(){
+        Flux<Integer> numFlux = Flux.just(1, 3, 5, 8, 9);
+        Mono<Boolean> hasEven = numFlux.any(n -> n % 2 == 0);
+        hasEven.doOnNext(result -> System.out.println("any 偶数: " + result))
+                .block();
+    }
+
+    // all: 所有元素都满足条件才返回 true
+    public void logicFluxByAll(){
+        Flux<Integer> numFlux = Flux.just(2, 4, 6, 8);
+        Mono<Boolean> allEven = numFlux.all(n -> n % 2 == 0);
+        allEven.doOnNext(result -> System.out.println("all 偶数: " + result))
+                .block();
+    }
+
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    static class User{
+        private String userName;
+        private Integer userAge;
     }
 }
